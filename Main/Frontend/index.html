@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Login & Sign-Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            margin-top: 50px;
+        }
+        .card-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .tabs .nav-item {
+            width: 33.33%;
+            text-align: center;
+        }
+        .form-group input {
+            font-size: 16px;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Login / Sign-Up
+                </div>
+                <div class="card-body">
+                    <!-- Tabs Navigation -->
+                    <ul class="nav nav-tabs tabs" id="loginTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="user-login-tab" data-toggle="tab" href="#userLogin" role="tab" aria-controls="userLogin" aria-selected="true">User Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="admin-login-tab" data-toggle="tab" href="#adminLogin" role="tab" aria-controls="adminLogin" aria-selected="false">Admin Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="sign-up-tab" data-toggle="tab" href="#signUp" role="tab" aria-controls="signUp" aria-selected="false">Sign Up</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="loginTabsContent">
+                        <!-- User Login -->
+                        <div class="tab-pane fade show active" id="userLogin" role="tabpanel" aria-labelledby="user-login-tab">
+                            <form method="POST" action="/login">
+                                <div class="form-group">
+                                    <label for="userUsername">Username</label>
+                                    <input type="text" class="form-control" id="userUsername" name="username" placeholder="Enter username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userPassword">Password</label>
+                                    <input type="password" class="form-control" id="userPassword" name="password" placeholder="Enter password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Login as User</button>
+                            </form>
+                        </div>
+
+                        <!-- Admin Login -->
+                        <div class="tab-pane fade" id="adminLogin" role="tabpanel" aria-labelledby="admin-login-tab">
+                            <form method="POST" action="/admin-login">
+                                <div class="form-group">
+                                    <label for="adminUsername">Admin Username</label>
+                                    <input type="text" class="form-control" id="adminUsername" name="username" placeholder="Enter admin username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="adminPassword">Admin Password</label>
+                                    <input type="password" class="form-control" id="adminPassword" name="password" placeholder="Enter admin password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Login as Admin</button>
+                            </form>
+                        </div>
+
+                        <!-- Sign Up -->
+                        <div class="tab-pane fade" id="signUp" role="tabpanel" aria-labelledby="sign-up-tab">
+                            <form method="POST" action="/sign-up">
+                                <div class="form-group">
+                                    <label for="signUpUsername">Username</label>
+                                    <input type="text" class="form-control" id="signUpUsername" name="username" placeholder="Enter username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signUpEmail">Email</label>
+                                    <input type="email" class="form-control" id="signUpEmail" name="email" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signUpPassword">Password</label>
+                                    <input type="password" class="form-control" id="signUpPassword" name="password" placeholder="Enter password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                            </form>
+                        </div>
+                    </div> <!-- End Tab Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
