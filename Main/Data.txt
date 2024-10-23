@@ -1,0 +1,15 @@
+import sys
+import os
+
+# Add the path to your Main folder using raw string
+sys.path.append(os.path.abspath(r"D:\Education\Uwindsor\Semester 3\Internship Project 1\Project\Main"))
+
+# Import the Flask app and database
+from app import app, db
+from models import User
+
+# Create application context and query users
+with app.app_context():
+    users = User.query.all()
+    for user in users:
+        print(f'Username: {user.username}, Password Hash: {user.password.decode("utf-8")}')
