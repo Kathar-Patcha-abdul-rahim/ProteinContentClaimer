@@ -31,7 +31,29 @@
         "Eggroll, spring roll, wonton, dumpling, or pot sticker wrappers"
       ],
       "RACC-Value": [
-        75, 55, 85, 40, 125, 75, 40, 80, 50, 30, 30, 30, 30, 35, 60, 30, 50, 55, 70, 30, 30, 30, 30
+        75,
+        55,
+        85,
+        40,
+        125,
+        75,
+        40,
+        80,
+        50,
+        30,
+        30,
+        30,
+        30,
+        35,
+        60,
+        30,
+        50,
+        55,
+        70,
+        30,
+        30,
+        30,
+        30
       ]
     },
     {
@@ -51,77 +73,155 @@
         "Cocoa, chocolate and mocha beverages (hot)"
       ],
       "RACC-Value": [
-        375, 188, 333, 83, 45, 250, 250, 30, 250, 250, 250, 250
+        375,
+        188,
+        333,
+        83,
+        45,
+        250,
+        250,
+        30,
+        250,
+        250,
+        250,
+        250
       ]
     },
     {
       "Category": "Cereals, Other Grain Products and Substitutes",
-      "sub-categories": ["Hot breakfast cereals, such as oatmeal, or cream of wheat",
-      "Ready-to-eat breakfast cereals, puffed and uncoated (weighing less than 20 g per 250 mL)",
-"Ready-to-eat breakfast cereals, puffed and coated, flaked, extruded, without fruit or nuts (weighing 20 g to 42 g per 250 mL), very high fibre cereals (with 28 g or more fibre per 100 g)",
-     "Ready-to-eat breakfast cereals, fruit and nut type, granola (weighing 43 g or more per 250 mL) and biscuit type cereals",
-     "Bran and wheat germ, pearl tapioca, milled flax, hemp and chia seeds", 
-    "Flours and cornmeal, including rye, potato, corn, barley, sorghum, buckwheat flours and gluten-free blends, but not including nut and other flours listed in item O.4",
-    "Grains, such as rice or barley, including couscous and flavoured rice and grains",
-    "Pastas, noodles, all varieties, including filled pastas, gnocchi, gluten-free alternatives, without sauce",
-    "Pastas, dry and ready-to-eat, such as fried chow mein noodles",
-    "Starch, such as cornstarch, potato starch, tapioca starch or wheat starch",
-    "Stuffing"
-
-  ],
-      "RACC-Value":["40 g dry, 250 mL prepared",15,30,55,15,30,"45 g dry ,140 g cooked","85 g dry 215 g cooked",25,10,100]
-},{
-  "Category": "Dairy Products And Substitutes",
-  "sub-categories": [ "Cheese, including cream cheese and cheese spread, except those listed as a separate item in column 1",
-"Cheese fondue preparation","Cottage cheese","Cheese used as an ingredient, such as dry cottage cheese or ricotta cheese",
-"Hard cheese,including grated, such as parmesan or" ,
-"Quark, fresh cheese and fresh dairy desserts","Cream, including creamer and milker cups, except those listed as separate item",
-"Cream, powder",
-"Cream, aerosol or whipped",
-"Eggnog",
-"Milk, evaporated or condensed",
-"Milk, buttermilk and milk-based drinks, such as chocolate milk",
-"Fermented dairy drinks such as kefir",
-"Drinkable yogurts",
-"Shakes and dairy- based smoothies, with or without coffee or juice, including protein shakes",
-"Sour cream",
-"Yogurt"
-],
-  "RACC-Value":[30,57,125,55,15,100,15,2,15,125,15,250,188,125,250,30,115]
-},{
-  "Category": "Desserts",
-  "sub-categories": ["Ice cream, ice milk, frozen yogurt, sherbet, other frozen dairy and non-dairy desserts sold in tubs, including sorbet and gelato",
-"Ice cream, ice milk, frozen yogurt, sherbet, frozen dairy and non-dairy desserts sold as cakes, sandwiches or cones",
-"Ice cream, ice milk, frozen yogurt, sherbet, other frozen dairy and non-dairy desserts sold as pops, bars or cups",
-"Sundaes",
-"Custard, gelatin and pudding, includes non-dairy products",
-"Mousse, chiffon and other whipped desserts"
-],
-  "RACC-Value":[188,125,75,250,130,65]
-},{
-  "Category": "Dessert Toppings and Fillings",
-  "sub-categories": ["Dessert toppings, such as glaze, maple butter and marshmallow cream",
-  "Cake frostings, icings, pastry creams and streusel topping",
-  "Pie fillings"],
-  "RACC-Value":[30,35,83]
-
-  },{
-    "Category": "Eggs And Egg Substitutes",
-    "sub-categories": ["Egg mixtures, such as egg foo young, scrambled eggs, omelettes, eggs in sauce",
-  "Eggs, including eggs in the shell, pickled eggs, liquid or dried whole egg and liquid egg-white",
-"Egg substitutes ",
-"Small eggs, used as garnish, such as quail eggs"],
-    "RACC-Value":[110,100,100,40]}
-    ,{
+      "sub-categories": [
+        "Hot breakfast cereals, such as oatmeal, or cream of wheat",
+        "Ready-to-eat breakfast cereals, puffed and uncoated (weighing less than 20 g per 250 mL)",
+        "Ready-to-eat breakfast cereals, puffed and coated, flaked, extruded, without fruit or nuts (weighing 20 g to 42 g per 250 mL), very high fibre cereals (with 28 g or more fibre per 100 g)",
+        "Ready-to-eat breakfast cereals, fruit and nut type, granola (weighing 43 g or more per 250 mL) and biscuit type cereals",
+        "Bran and wheat germ, pearl tapioca, milled flax, hemp and chia seeds",
+        "Flours and cornmeal, including rye, potato, corn, barley, sorghum, buckwheat flours and gluten-free blends, but not including nut and other flours listed in item O.4",
+        "Grains, such as rice or barley, including couscous and flavoured rice and grains",
+        "Pastas, noodles, all varieties, including filled pastas, gnocchi, gluten-free alternatives, without sauce",
+        "Pastas, dry and ready-to-eat, such as fried chow mein noodles",
+        "Starch, such as cornstarch, potato starch, tapioca starch or wheat starch",
+        "Stuffing"
+      ],
+      "RACC-Value": [
+        40,
+        15,
+        30,
+        55,
+        15,
+        30,
+        45,
+        85,
+        25,
+        10,
+        100
+      ]
+    },
+    {
+      "Category": "Dairy Products And Substitutes",
+      "sub-categories": [
+        "Cheese, including cream cheese and cheese spread, except those listed as a separate item in column 1",
+        "Cheese fondue preparation",
+        "Cottage cheese",
+        "Cheese used as an ingredient, such as dry cottage cheese or ricotta cheese",
+        "Hard cheese,including grated, such as parmesan or",
+        "Quark, fresh cheese and fresh dairy desserts",
+        "Cream, including creamer and milker cups, except those listed as separate item",
+        "Cream, powder",
+        "Cream, aerosol or whipped",
+        "Eggnog",
+        "Milk, evaporated or condensed",
+        "Milk, buttermilk and milk-based drinks, such as chocolate milk",
+        "Fermented dairy drinks such as kefir",
+        "Drinkable yogurts",
+        "Shakes and dairy- based smoothies, with or without coffee or juice, including protein shakes",
+        "Sour cream",
+        "Yogurt"
+      ],
+      "RACC-Value": [
+        30,
+        57,
+        125,
+        55,
+        15,
+        100,
+        15,
+        2,
+        15,
+        125,
+        15,
+        250,
+        188,
+        125,
+        250,
+        30,
+        115
+      ]
+    },
+    {
+      "Category": "Desserts",
+      "sub-categories": [
+        "Ice cream, ice milk, frozen yogurt, sherbet, other frozen dairy and non-dairy desserts sold in tubs, including sorbet and gelato",
+        "Ice cream, ice milk, frozen yogurt, sherbet, frozen dairy and non-dairy desserts sold as cakes, sandwiches or cones",
+        "Ice cream, ice milk, frozen yogurt, sherbet, other frozen dairy and non-dairy desserts sold as pops, bars or cups",
+        "Sundaes",
+        "Custard, gelatin and pudding, includes non-dairy products",
+        "Mousse, chiffon and other whipped desserts"
+      ],
+      "RACC-Value": [
+        188,
+        125,
+        75,
+        250,
+        130,
+        65
+      ]
+    },
+    {
+      "Category": "Dessert Toppings and Fillings",
+      "sub-categories": [
+        "Dessert toppings, such as glaze, maple butter and marshmallow cream",
+        "Cake frostings, icings, pastry creams and streusel topping",
+        "Pie fillings"
+      ],
+      "RACC-Value": [
+        30,
+        35,
+        83
+      ]
+    },
+    {
+      "Category": "Eggs And Egg Substitutes",
+      "sub-categories": [
+        "Egg mixtures, such as egg foo young, scrambled eggs, omelettes, eggs in sauce",
+        "Eggs, including eggs in the shell, pickled eggs, liquid or dried whole egg and liquid egg-white",
+        "Egg substitutes ",
+        "Small eggs, used as garnish, such as quail eggs"
+      ],
+      "RACC-Value": [
+        110,
+        100,
+        100,
+        40
+      ]
+    },
+    {
       "Category": "Fats And Oils",
-      "sub-categories": ["Butter, margarine, shortening, lard, solid coconut oil, butter-flavoured spread",
-   "Vegetable oil, including liquid coconut oil",
-   "Butter replacement, powder",
-   "Dressings for salad, dipping oil for bread (may contain vinegar or spices/herbs)",
-   "Mayonnaise, sandwich spread and mayonnaise- type dressing",
-   "Oil, spray type, including salad dressing spray"
-    ],
-      "RACC-Value":[10,10,2,30,15,0.5]
+      "sub-categories": [
+        "Butter, margarine, shortening, lard, solid coconut oil, butter-flavoured spread",
+        "Vegetable oil, including liquid coconut oil",
+        "Butter replacement, powder",
+        "Dressings for salad, dipping oil for bread (may contain vinegar or spices/herbs)",
+        "Mayonnaise, sandwich spread and mayonnaise- type dressing",
+        "Oil, spray type, including salad dressing spray"
+      ],
+      "RACC-Value": [
+        10,
+        10,
+        2,
+        30,
+        15,
+        0.5
+      ]
     },
     {
       "Category": "Marine and Fresh Water Animals and Substitutes",
@@ -132,7 +232,13 @@
         "Marine and fresh water animals, including land snails, canned",
         "Marine and fresh water animals, smoked or pickled, or spreads"
       ],
-      "RACC-Value": [15, 140, 125, 55, 55]
+      "RACC-Value": [
+        15,
+        140,
+        125,
+        55,
+        55
+      ]
     },
     {
       "Category": "Fruit and Fruit Juices",
@@ -152,8 +258,24 @@
         "Freeze-dried fruit",
         "Fruit powder"
       ],
-      "RACC-Value": [140, 80, 150, 30, 55, 110, 40, 30, 4, 60, 250, 5, 28, 10]
-    },{
+      "RACC-Value": [
+        140,
+        80,
+        150,
+        30,
+        55,
+        110,
+        40,
+        30,
+        4,
+        60,
+        250,
+        5,
+        28,
+        10
+      ]
+    },
+    {
       "Category": "Legumes",
       "sub-categories": [
         "Tofu (bean curd), egg tofu, or tempeh, without sauce",
@@ -163,9 +285,14 @@
         "Dried texturized soy protein and soy protein isolate"
       ],
       "RACC-Value": [
-        85, 125, 35, 125, 20
+        85,
+        125,
+        35,
+        125,
+        20
       ]
-    },{
+    },
+    {
       "Category": "Meat, Poultry, Their Products, and Substitutes",
       "sub-categories": [
         "Pork rinds and bacon",
@@ -180,8 +307,21 @@
         "Meat and poultry with sauce",
         "Meat or poultry sticks"
       ],
-      "RACC-Value": [54, 30, 30, 75, 75, 125, 100, 85, 55, 140, 20]
-    },{
+      "RACC-Value": [
+        54,
+        30,
+        30,
+        75,
+        75,
+        125,
+        100,
+        85,
+        55,
+        140,
+        20
+      ]
+    },
+    {
       "Category": "Miscellaneous Category",
       "sub-categories": [
         "Baking powder, baking soda, pectin, baker's yeast, vanilla extract and other flavouring preparations",
@@ -193,24 +333,47 @@
         "Chewing gum",
         "Salad and potato toppers, such as salad crunchies, salad crispins, bacon bits and their substitutes",
         "Salt, salt substitutes and seasoned salts such as garlic salt and salt-based seasonings (which may contain herbs, spices, dehydrated vegetables, etc.), flavour enhancers, such as steak spice",
-"Spices and herbs, without salt",
-"Coconut milk",
-"Dried coconut, flakes, shredded ",
-"Edible insects, powdered, whole, including snacks",
-"Soy lecithin",
-"Bee pollen",
-"Agar agar powder"
+        "Spices and herbs, without salt",
+        "Coconut milk",
+        "Dried coconut, flakes, shredded ",
+        "Edible insects, powdered, whole, including snacks",
+        "Soy lecithin",
+        "Bee pollen",
+        "Agar agar powder"
       ],
-      "RACC-Value": [0.6, 4, 30, 30, 5, 250, 3, 7,1,0.5,83,15,15,3,5,0.05]
+      "RACC-Value": [
+        0.6,
+        4,
+        30,
+        30,
+        5,
+        250,
+        3,
+        7,
+        1,
+        0.5,
+        83,
+        15,
+        15,
+        3,
+        5,
+        0.05
+      ]
     },
     {
       "Category": "Combination Dishes Including Main Dishes",
       "sub-categories": [
         "Combination dishes, such as chicken and rice casserole, hash, macaroni and cheese with or without meat, spaghetti with sauce, lasagna, stir fry, meat or poultry casserole, baked beans, wieners and beans, meat chili, chili with beans, creamed chipped beef, beef or poultry ravioli with sauce, beef stroganoff, poultry à la king, Brunswick stew, goulash, stew, ragout, poutine, butter chicken with rice, shepherd's pie, stuffed cannelloni with sauce, stuffed poultry",
-        "Burritos, enchiladas, pizza, pizza rolls, sausage rolls, pastry rolls, cabbage rolls, quiche, sandwiches, crackers and meat or poultry lunch-type packages, gyros, burger on a bun, frank on a bun, calzones, tacos, pockets stuffed with meat, chicken cordon bleu, stuffed vegetables with meat or poultry, kabobs and souvlaki (meat and vegetables), empanadas, fajitas, sushi, perogies, souvlaki, pot pie, meat pie or tourtière, salad kit/bowl, consumed as a meal"
-      ,"Hors d'oeuvres, such as onion rings, dumplings, egg rolls, breaded zucchini sticks and other finger foods, such as mini quiches, cocktail sausage rolls and other stuffed puff pastries"],
-      "RACC-Value": [300, 200,85]
-    },{
+        "Burritos, enchiladas, pizza, pizza rolls, sausage rolls, pastry rolls, cabbage rolls, quiche, sandwiches, crackers and meat or poultry lunch-type packages, gyros, burger on a bun, frank on a bun, calzones, tacos, pockets stuffed with meat, chicken cordon bleu, stuffed vegetables with meat or poultry, kabobs and souvlaki (meat and vegetables), empanadas, fajitas, sushi, perogies, souvlaki, pot pie, meat pie or tourtière, salad kit/bowl, consumed as a meal",
+        "Hors d'oeuvres, such as onion rings, dumplings, egg rolls, breaded zucchini sticks and other finger foods, such as mini quiches, cocktail sausage rolls and other stuffed puff pastries"
+      ],
+      "RACC-Value": [
+        300,
+        200,
+        85
+      ]
+    },
+    {
       "Category": "Nuts and Seeds",
       "sub-categories": [
         "Nuts and seeds, not for use as snacks: whole, chopped, sliced, slivered or ground",
@@ -218,7 +381,12 @@
         "Peanut butter, nut butters and substitutes, such as coconut and soya butter, including tahini",
         "Nut flours, such as almond flour and similar flours, including coconut, peanut and soya flours"
       ],
-      "RACC-Value": [30, 30, 15, 15]
+      "RACC-Value": [
+        30,
+        30,
+        15,
+        15
+      ]
     },
     {
       "Category": "Potatoes, Sweet Potatoes, and Yams",
@@ -228,18 +396,23 @@
         "Potatoes, sweet potatoes, yams, cassava, plantains, plain, fresh, canned, or frozen"
       ],
       "RACC-Value": [
-        85, 
-        140, 
+        85,
+        140,
         110
       ]
-    },{
+    },
+    {
       "Category": "Salads",
       "sub-categories": [
         "Salads, such as egg, fish, shellfish, bean, vegetable including salad kit, broccoli salad and carrot salad, meat, ham or poultry salad",
         "Gelatin salad",
         "Pasta, potato, or grain-based (e.g. couscous, barley, wheat berry) salad"
       ],
-      "RACC-Value": [100, 120, 140]
+      "RACC-Value": [
+        100,
+        120,
+        140
+      ]
     },
     {
       "Category": "Sauces, Dips, Gravies, and Condiments",
@@ -252,22 +425,39 @@
         "Minor condiments, such as horseradish, capers, hot sauce, mustard, liquid smoke or Worcestershire sauce",
         "Wasabi paste"
       ],
-      "RACC-Value": [30, 30, 125, 60, 15, 5, 5]
-    },{
+      "RACC-Value": [
+        30,
+        30,
+        125,
+        60,
+        15,
+        5,
+        5
+      ]
+    },
+    {
       "Category": "Snacks",
       "sub-categories": [
         "Chips, pretzels, popcorn, includes coated versions, extruded snacks, grain and pulse-based snacks, pita chips and fruit-based snacks, such as fruit chips",
         "Nuts or seeds, or a mixture of these, with or without chocolate, candies, dried fruit or other food added, for use as snacks",
         "Roasted seaweed (nori), for use as snacks"
       ],
-      "RACC-Value": [50, 50, 5]
-    },{
+      "RACC-Value": [
+        50,
+        50,
+        5
+      ]
+    },
+    {
       "Category": "Soups",
       "sub-categories": [
         "All varieties of soup, including bouillon, broth, and fondue broth"
       ],
-      "RACC-Value": [250]
-    },{
+      "RACC-Value": [
+        250
+      ]
+    },
+    {
       "Category": "Sugars and Sweets",
       "sub-categories": [
         "Candies, confectionaries and chocolates, including a mixture of these with or without other food added, fudge, halva, chocolate bars and other chocolate products, such as yogurt and chocolate covered nuts and raisins, Halloween candy, box of assorted chocolates",
@@ -287,9 +477,24 @@
         "Syrups used as ingredients, such as corn syrup, agave syrup and flavoured syrups for milk"
       ],
       "RACC-Value": [
-        40, 10, 15, 15, 2, 5, 30, 20, 15, 20, 30, 4, 4, 60, 30
+        40,
+        10,
+        15,
+        15,
+        2,
+        5,
+        30,
+        20,
+        15,
+        20,
+        30,
+        4,
+        4,
+        60,
+        30
       ]
-    },{
+    },
+    {
       "Category": "Vegetables",
       "sub-categories": [
         "Vegetables without sauce, including cream style corn and stewed tomatoes, artichoke hearts and hearts of palm, packed in water, lettuce, all varieties including blends, but not including vegetables without sauce listed as a separate item in column 1",
@@ -305,8 +510,22 @@
         "Vegetable pastes, such as tomato paste",
         "Vegetable sauce or purée, such as tomato sauce or tomato purée"
       ],
-      "RACC-Value": [85, 110, 4, 30, 15, 65, 250, 15, 30, 15, 30, 60]
-    },{
+      "RACC-Value": [
+        85,
+        110,
+        4,
+        30,
+        15,
+        65,
+        250,
+        15,
+        30,
+        15,
+        30,
+        60
+      ]
+    },
+    {
       "Category": "Foods Intended Solely For Children Under Four Years Of Age",
       "sub-categories": [
         "Cereals, dry, instant, to be prepared with water, breast milk or infant formula",
@@ -323,13 +542,21 @@
         "Vegetable sauce or purée, such as tomato sauce or tomato purée",
         "Yogurt, represented for children one year of age or older but less than four years of age"
       ],
-      "RACC-Value": [30, 20, 7, 110, 170, 125, 250, 15, 30, 15, 30, 60, 100]
-    },{
-      "Category": "Meal Replacements and Nutritional Supplements",
-      "sub-categories": [
-        "Meal replacements or nutritional supplements, ready to consume or requiring preparation, such as drinks, shakes, soups, bars, puddings, cereal"
-      ],
-      "RACC-Value": ["Amount required to meet the compositional requirements set out in B.24.200, or B.24.201, when prepared according to directions for use, if the food requires preparation"]
+      "RACC-Value": [
+        30,
+        20,
+        7,
+        110,
+        170,
+        125,
+        250,
+        15,
+        30,
+        15,
+        30,
+        60,
+        100
+      ]
     }
-]
+  ]
 }
