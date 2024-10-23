@@ -23,9 +23,12 @@ for _, row in df[columns_to_extract].iterrows():
 
 # Now extracted_data is a list where each element is a dictionary with key-value pairs
 # Example access to the first row
-print(extracted_data[0])  # Access the first row (index 0)
-print(extracted_data[1])  # Access the second row (index 1)
+#print(extracted_data[0])  # Access the first row (index 0)
+#print(extracted_data[1])  # Access the second row (index 1)
 
 # To access the key-value pairs for each row in the list
-for i, row in enumerate(extracted_data):
-    print(f"Row {i}: {row}")
+
+count = 1
+for row in enumerate(extracted_data):
+    print(f"Row {count}: {row}")
+    count += 1
