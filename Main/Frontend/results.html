@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 20px;
+            background-color: #f8f9fa; /* Light background color for better contrast */
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center; /* Center align the heading */
+            color: #343a40; /* Darker color for the heading */
+        }
+        .table {
+            border-radius: 0.5rem; /* Rounded corners for the table */
+            overflow: hidden; /* Ensures the rounded corners are visible */
+            background-color: #ffffff; /* White background for the table */
+        }
+        .table thead th {
+            background-color: #007bff; /* Bootstrap primary color */
+            color: #ffffff; /* White text for better readability */
+        }
+        .table tbody tr:hover {
+            background-color: #f1f1f1; /* Light grey on hover */
+        }
+        .alert {
+            border-radius: 0.5rem; /* Rounded corners for alerts */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculation Results</h2>
+
+        {% if results %}
+            <div class="table-responsive" style="text-align: center"> <!-- Responsive table wrapper -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sample</th>
+                            <th>Protein</th>
+                            <th>RACC</th>
+                            <th>PDCAAS Claim</th>
+                            <th>PDCAAS Claim Status</th>
+                            <th>IVPDCAAS Claim</th>
+                            <th>IVPDCAAS Claim Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                            <tr>
+                                <td>{{ result.sample }}</td>
+                                <td>{{ '%.2f' | format(result.protein) }}g</td>
+                                <td>{{ result.racc }}g</td>
+                                <td>{{ '%.2f' | format(result.pdcaas_claim) }}</td> <!-- Round PDCAAS Claim -->
+                                <td>{{ result.pdcaas_claim_status }}</td>
+                                <td>{{ '%.2f' | format(result.ivpdcaas_claim) }}</td> <!-- Round IVPDCAAS Claim -->
+                                <td>{{ result.ivpdcaas_claim_status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% elif result %}
+            <div class="alert alert-info">
+                <strong>Sample:</strong> {{ result.sample }}<br>
+                <strong>Protein:</strong> {{ result.protein }}g<br>
+                <strong>RACC:</strong> {{ result.racc }}g<br>
+                <strong>PDCAAS Claim:</strong> {{ '%.2f' | format(result.pdcaas_claim) }}<br> <!-- Round PDCAAS Claim -->
+                <strong>PDCAAS Claim Status:</strong> {{ result.pdcaas_claim_status }}<br>
+                <strong>IVPDCAAS Claim:</strong> {{ '%.2f' | format(result.ivpdcaas_claim) }}<br> <!-- Round IVPDCAAS Claim -->
+                <strong>IVPDCAAS Claim Status:</strong> {{ result.ivpdcaas_claim_status }}
+            </div>
+        {% else %}
+            <div class="alert alert-warning">No results to display.</div>
+        {% endif %}
+
+        <div class="text-center"> <!-- Center align the button -->
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
