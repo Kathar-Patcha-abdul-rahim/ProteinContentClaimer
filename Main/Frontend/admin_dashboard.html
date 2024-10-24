@@ -9,15 +9,105 @@
 <body>
     <div class="container">
         <h2 class="text-center mt-5">Admin Dashboard</h2>
-        <h4>Pending Admin Requests</h4>
-        <ul class="list-group">
-            {% for user in admin_requests %}
-            <li class="list-group-item">
-                {{ user.username }}
-                <a href="{{ url_for('approve_admin', user_id=user.id) }}" class="btn btn-sm btn-success float-end">Approve</a>
-            </li>
-            {% endfor %}
-        </ul>
 
-        <h4 class="mt-5">All Users</h4>
-        <ul class="list-group
+        <!-- Add User Form -->
+        <div class="card my-4">
+            <div class="card-header">
+                <h4>Add New User</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('admin_dashboard') }}">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="admin_request" name="admin_request">
+                        <label class="form-check-label" for="admin_request">Request Admin Access</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add User</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Requests -->
+        <div class="card my-4">
+            <div class="card-header">
+                <h4>Pending Admin Requests</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% if admin_requests %}
+                        {% for user in admin_requests %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>{{ user.username }}</strong> (ID: {{ user.id }}) - Admin Request</span>
+                            <div>
+                                <a href="{{ url_for('approve_admin', user_id=user.id) }}" class="btn btn-sm btn-success">Approve</a>
+                                <a href="{{ url_for('disapprove_admin', user_id=user.id) }}" class="btn btn-sm btn-danger ms-2">Disapprove</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="list-group-item">No pending admin requests.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- All Users -->
+        <div class="card my-4">
+            <div class="card-header">
+                <h4>All Users</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Password (Hashed)</th>
+                                <th>Admin Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if users %}
+                                {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.password }}</td>
+                                    <td>{{ "Admin" if user.is_admin else "User" }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-around">
+                                            <a href="{{ url_for('delete_user', user_id=user.id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                            {% if user.admin_request %}
+                                            <a href="{{ url_for('approve_admin', user_id=user.id) }}" class="btn btn-sm btn-success ms-2">Approve Admin</a>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="5" class="text-center">No users found.</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
