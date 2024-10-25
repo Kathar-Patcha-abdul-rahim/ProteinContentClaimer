@@ -1,34 +1,45 @@
 import pandas as pd
 
-# Load the Excel file
-file_path = '../SampleInputs/Pulse database for projects 4 .xlsx'  # Update this to your file path
+def load_excel_file(file_path):
+    """Load an Excel file into a pandas DataFrame."""
+    return pd.read_excel(file_path)
 
-# Read the Excel file into a pandas DataFrame
-df = pd.read_excel(file_path)
+def extract_data(df, columns_to_extract):
+    """Extract specified columns from the DataFrame and return a list of dictionaries."""
+    extracted_data = []
 
-# Select the required columns
-columns_to_extract = ['SAMPLE', 'PROTEIN %', 'PDCAAS', 'IVPDCAAS']
+    for _, row in df[columns_to_extract].iterrows():
+        row_dict = {col.lower(): row[col] for col in columns_to_extract}  # Convert keys to lowercase
 
-# Create a list of dictionaries (key-value pairs) for each row, converting keys to lowercase
-extracted_data = []
+        # Rename 'protein %' to 'protein'
+        if 'protein %' in row_dict:
+            row_dict['protein'] = row_dict.pop('protein %')
 
-for _, row in df[columns_to_extract].iterrows():
-    row_dict = {col.lower(): row[col] for col in df[columns_to_extract].columns}  # Convert keys to lowercase
+        extracted_data.append(row_dict)
 
-    # Rename 'protein %' to 'protein'
-    if 'protein %' in row_dict:
-        row_dict['protein'] = row_dict.pop('protein %')
+    return extracted_data
 
-    extracted_data.append(row_dict)
+def print_extracted_data(extracted_data):
+    """Print the extracted data in a structured format."""
+    for count, row in enumerate(extracted_data, start=1):
+        print(f"Row {count}: {row}")
 
-# Now extracted_data is a list where each element is a dictionary with key-value pairs
-# Example access to the first row
-#print(extracted_data[0])  # Access the first row (index 0)
-#print(extracted_data[1])  # Access the second row (index 1)
+def main():
+    # File path to the Excel file
+    file_path = '../SampleInputs/Pulse database for projects 4 .xlsx'  # Update this to your file path
 
-# To access the key-value pairs for each row in the list
+    # Columns to extract from the DataFrame
+    columns_to_extract = ['SAMPLE', 'PROTEIN %', 'PDCAAS', 'IVPDCAAS']
 
-count = 1
-for row in enumerate(extracted_data):
-    print(f"Row {count}: {row}")
-    count += 1
+    # Load the Excel file
+    df = load_excel_file(file_path)
+
+    # Extract the required data
+    extracted_data = extract_data(df, columns_to_extract)
+
+    # Print the extracted data
+    print_extracted_data(extracted_data)
+
+# Entry point for the script
+if __name__ == "__main__":
+    main()
