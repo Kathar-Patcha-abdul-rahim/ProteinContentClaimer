@@ -3,11 +3,14 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import bcrypt
-from openpyxl.styles.builtins import calculation
+import pandas as pd
+from io import BytesIO
+from flask import send_file
 
 from Main.Backend import inputExtraction, loadData
 from Main.Backend.calculation import process_enhanced_data, perform_operation, display_results
 from Main.Backend.logic import process_data, perform
+
 
 # Create a Flask app
 app = Flask(__name__, template_folder='Frontend')
@@ -114,8 +117,10 @@ def process_manual():
     # Redirect or render the results page
     return render_template('results.html', results=results)  # Modify this as needed
 
+
 @app.route('/upload_excel', methods=['POST'])
 def upload_excel():
+    global df
     # Handle Excel file upload
     if 'excel_file' not in request.files:
         flash('No file part', 'danger')
@@ -128,20 +133,55 @@ def upload_excel():
         return redirect(url_for('dashboard'))
 
     if file and (file.filename.endswith('.xlsx') or file.filename.endswith('.xls')):
-        # Save the file locally
+        # Save the file temporarily to process
         file_path = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(file_path)
 
         json_path = "resources/NutritionReferenceAmounts.json"
 
-        # Process the data
+        # Process the data and add new fields
         enhanced_data = perform_operation(file_path, json_path)
 
-        # Render the results
-        return render_template('results.html', results=enhanced_data)
+        # Load the original Excel file into a pandas DataFrame
+        df = pd.read_excel(file_path)
+
+        # Add new columns based on enhanced data
+        df['PDCAAS'] = [entry['pdcaas'] for entry in enhanced_data]
+        df['PDCAAS Claim'] = [entry['pdcaas_claim'] for entry in enhanced_data]
+        df['PDCAAS Claim Status'] = [entry['pdcaas_claim_status'] for entry in enhanced_data]
+        df['IVPDCAAS'] = [entry['ivpdcaas'] for entry in enhanced_data]
+        df['IVPDCAAS Claim'] = [entry['ivpdcaas_claim'] for entry in enhanced_data]
+        df['IVPDCAAS Claim Status'] = [entry['ivpdcaas_claim_status'] for entry in enhanced_data]
+
+        # Save the updated DataFrame to an in-memory file
+        output = BytesIO()
+        with pd.ExcelWriter(output, engine='openpyxl') as writer:
+            df.to_excel(writer, index=False)
+        output.seek(0)
+
+        # Render results page with download option
+        return render_template('results.html', results=enhanced_data, download_file=True)
 
     flash('Invalid file format. Please upload an Excel file.', 'danger')
     return redirect(url_for('dashboard'))
+
+
+@app.route('/download_excel')
+def download_excel():
+    global df  # Ensure the global df is referenced
+    if df.empty:
+        flash('No data available for download. Please upload and process an Excel file first.', 'danger')
+        return redirect(url_for('dashboard'))
+
+    # Create an in-memory file with the updated data
+    output = BytesIO()
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        df.to_excel(writer, index=False)
+    output.seek(0)
+
+    # Send the file as a download response
+    return send_file(output, download_name='updated_data.xlsx', as_attachment=True)
+
 
 @app.route('/admin_dashboard', methods=['GET', 'POST'])
 def admin_dashboard():

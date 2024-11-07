@@ -1,14 +1,22 @@
-
 import re
+
+import static
+from sqlalchemy import false
 
 from Main.Backend import inputExtraction, loadData
 
 # List of words to ignore during the final frequency count tie-breaking
-ignored_words = ['extruded', 'cooked', 'baked']
+ignored_words = ['extruded', 'cooked', 'baked', 'red', 'green']
 
-# Function to convert a string into a list of words (tokens)
-def tokenize_string(sample_str):
-    return re.findall(r'\b\w+\b', sample_str.lower())
+flag = True
+
+# Function to convert a string into a list of words (tokens), ignoring specified words
+def tokenize_string(sample_str, ignored_words=ignored_words):
+    tokens = re.findall(r'\b\w+\b', sample_str.lower())
+    # Filter out any tokens that are in the ignored words list
+    if flag:
+        tokens = [token for token in tokens if token not in ignored_words]
+    return tokens
 
 # Function to generate all consecutive word combinations (phrases) from a list of tokens
 def generate_combinations(tokens):
@@ -20,7 +28,8 @@ def generate_combinations(tokens):
 
 # Function to find the best matching subcategory for a given sample string
 def find_best_match(sample, data_file):
-    sample_tokens = tokenize_string(sample)
+    sample_tokens = tokenize_string(sample)  # Ignore words during tokenization
+    flag = False
     sample_combinations = generate_combinations(sample_tokens)
     best_matches = []
     max_matches = 0
@@ -85,7 +94,7 @@ def print_results(enhanced_data):
         print(f"Best Matching Subcategory: {row['best_match']}")
         print(f"RACC Value: {row['racc']}\n")
 
-def perform(file_path, json_path):
+def perform(file_path, json_path=None):
     df = inputExtraction.load_excel_file(file_path)
     columns_to_extract = ['SAMPLE', 'PROTEIN %', 'PDCAAS', 'IVPDCAAS']
     input_data = inputExtraction.extract_data(df, columns_to_extract)

@@ -7,28 +7,74 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            margin: 20px;
-            background-color: #f8f9fa; /* Light background color for better contrast */
+            margin: 0;
+            padding: 0;
+            background: url('https://your-image-url.com') no-repeat center center fixed; /* Protein-related HD background */
+            background-size: cover;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
         }
+
         h2 {
-            margin-bottom: 20px;
-            text-align: center; /* Center align the heading */
-            color: #343a40; /* Darker color for the heading */
+            margin-top: 20px;
+            text-align: center;
+            color: #343a40;
         }
+
+        .container {
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            border-radius: 10px;
+            padding: 30px;
+        }
+
         .table {
-            border-radius: 0.5rem; /* Rounded corners for the table */
-            overflow: hidden; /* Ensures the rounded corners are visible */
-            background-color: #ffffff; /* White background for the table */
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: #ffffff;
         }
+
         .table thead th {
-            background-color: #007bff; /* Bootstrap primary color */
-            color: #ffffff; /* White text for better readability */
+            background-color: #007bff;
+            color: #ffffff;
         }
+
         .table tbody tr:hover {
-            background-color: #f1f1f1; /* Light grey on hover */
+            background-color: #f1f1f1;
         }
+
         .alert {
-            border-radius: 0.5rem; /* Rounded corners for alerts */
+            border-radius: 0.5rem;
+        }
+
+        .download-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .download-btn a {
+            background-color: #28a745;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back-btn a {
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -37,7 +83,7 @@
         <h2>Calculation Results</h2>
 
         {% if results %}
-            <div class="table-responsive" style="text-align: center"> <!-- Responsive table wrapper -->
+            <div class="table-responsive" style="text-align: center">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -56,9 +102,9 @@
                                 <td>{{ result.sample }}</td>
                                 <td>{{ '%.2f' | format(result.protein) }}g</td>
                                 <td>{{ result.racc }}g</td>
-                                <td>{{ '%.2f' | format(result.pdcaas_claim) }}</td> <!-- Round PDCAAS Claim -->
+                                <td>{{ '%.2f' | format(result.pdcaas_claim) }}</td>
                                 <td>{{ result.pdcaas_claim_status }}</td>
-                                <td>{{ '%.2f' | format(result.ivpdcaas_claim) }}</td> <!-- Round IVPDCAAS Claim -->
+                                <td>{{ '%.2f' | format(result.ivpdcaas_claim) }}</td>
                                 <td>{{ result.ivpdcaas_claim_status }}</td>
                             </tr>
                         {% endfor %}
@@ -70,18 +116,23 @@
                 <strong>Sample:</strong> {{ result.sample }}<br>
                 <strong>Protein:</strong> {{ result.protein }}g<br>
                 <strong>RACC:</strong> {{ result.racc }}g<br>
-                <strong>PDCAAS Claim:</strong> {{ '%.2f' | format(result.pdcaas_claim) }}<br> <!-- Round PDCAAS Claim -->
+                <strong>PDCAAS Claim:</strong> {{ '%.2f' | format(result.pdcaas_claim) }}<br>
                 <strong>PDCAAS Claim Status:</strong> {{ result.pdcaas_claim_status }}<br>
-                <strong>IVPDCAAS Claim:</strong> {{ '%.2f' | format(result.ivpdcaas_claim) }}<br> <!-- Round IVPDCAAS Claim -->
+                <strong>IVPDCAAS Claim:</strong> {{ '%.2f' | format(result.ivpdcaas_claim) }}<br>
                 <strong>IVPDCAAS Claim Status:</strong> {{ result.ivpdcaas_claim_status }}
             </div>
         {% else %}
             <div class="alert alert-warning">No results to display.</div>
         {% endif %}
 
-        <div class="text-center"> <!-- Center align the button -->
+        <div class="back-btn">
             <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
         </div>
+    </div>
+
+    <!-- Excel Download Button -->
+    <div class="download-btn">
+        <a href="{{ url_for('download_excel') }}" class="btn btn-success">Download Excel</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
