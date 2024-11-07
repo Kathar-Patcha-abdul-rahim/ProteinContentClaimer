@@ -5,14 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .tile-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tile-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .bg-dark-blue { background-color: #3b5998; }
+        .bg-teal { background-color: #20c997; }
+        .bg-purple { background-color: #6f42c1; }
+        .tile-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2 class="text-center mt-5">Admin Dashboard</h2>
+    <div class="container my-4">
+
+        <!-- Navigation Tiles -->
+        <div class="row text-center mb-4">
+            <div class="col-md-4">
+                <a href="{{ url_for('dashboard') }}" class="tile-card bg-dark-blue text-white d-block rounded">
+                    <div class="tile-icon">🏠</div>
+                    Move to User Dashboard
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ url_for('login') }}" class="tile-card bg-danger text-white d-block rounded">
+                    <div class="tile-icon">🚪</div>
+                    Logout
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#addUserForm" class="tile-card bg-teal text-white d-block rounded">
+                    <div class="tile-icon">➕</div>
+                    Add New User
+                </a>
+            </div>
+        </div>
+
+        <h2 class="text-center text-primary my-4">Admin Dashboard</h2>
 
         <!-- Add User Form -->
-        <div class="card my-4">
-            <div class="card-header">
+        <div class="card my-4" id="addUserForm">
+            <div class="card-header bg-purple text-white">
                 <h4>Add New User</h4>
             </div>
             <div class="card-body">
@@ -36,9 +81,9 @@
             </div>
         </div>
 
-        <!-- Admin Requests -->
+        <!-- Pending Admin Requests -->
         <div class="card my-4">
-            <div class="card-header">
+            <div class="card-header bg-info text-white">
                 <h4>Pending Admin Requests</h4>
             </div>
             <div class="card-body">
@@ -62,7 +107,7 @@
 
         <!-- All Users -->
         <div class="card my-4">
-            <div class="card-header">
+            <div class="card-header bg-warning text-dark">
                 <h4>All Users</h4>
             </div>
             <div class="card-body">

@@ -3,17 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Welcome to NutriTrack</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ensure video background covers the entire screen */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Overlay for video tint */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); /* Slightly lighter tint */
+            z-index: 0;
+        }
+
+        /* Welcome container styling */
+        .welcome-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 100px 20px;
+            background: rgba(255, 255, 255, 0.6); /* Light background for better contrast */
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 800px;
+            color: #333;
+        }
+
+        .welcome-container h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .welcome-container p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* Button styling */
+        .welcome-container .btn {
+            margin: 10px;
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            border-radius: 30px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* Button color adjustments */
+        .btn-primary { background-color: #4CAF50; }
+        .btn-primary:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+            background-color: #45a049;
+        }
+        .btn-success { background-color: #28a745; }
+        .btn-success:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+            background-color: #218838;
+        }
+        .btn-secondary { background-color: #007bff; }
+        .btn-secondary:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+            background-color: #0056b3;
+        }
+
+        /* Info section styling */
+        .info-section {
+            position: relative;
+            z-index: 1;
+            padding: 60px 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 1000px;
+            color: #333;
+        }
+
+        /* Card styling */
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Lighter background for cards */
+            border: none;
+            color: #333;
+            transition: transform 0.3s, background-color 0.3s;
+            border-radius: 15px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        /* Ensures images are responsive and fill the card container correctly */
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .welcome-container, .info-section {
+                padding: 40px 20px;
+            }
+
+            .welcome-container h1 {
+                font-size: 2.5rem;
+            }
+
+            .card img {
+                height: 180px;
+            }
+        }
+
+        /* Specific adjustments for the video inside cards */
+        .card video {
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-    <div class="container text-center">
-        <h1>Welcome! Are you a User or Admin?</h1>
-        <div class="mt-5">
+
+    <!-- Video Background -->
+    <video class="background-video" autoplay loop muted>
+        <source src="{{ url_for('static', filename='videos/DNAVideo.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay for video tint -->
+    <div class="overlay"></div>
+
+    <!-- Welcome Section -->
+    <div class="welcome-container">
+        <h1>Welcome to NutriTrack</h1>
+        <p>Explore a smarter way to monitor and enhance your dietary intake. With NutriTrack, dive deep into protein quality, nutritional insights, and personalized data-driven recommendations.</p>
+        <div class="mt-4">
             <a href="{{ url_for('login') }}" class="btn btn-primary">User Login</a>
             <a href="{{ url_for('login') }}" class="btn btn-success">Admin Login</a>
             <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
         </div>
     </div>
+
+    <!-- Info Section -->
+    <div class="info-section container text-center">
+        <h2 class="mb-5">Why Choose NutriTrack?</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <video class="card-img-top" autoplay loop muted>
+                        <source src="{{ url_for('static', filename='videos/protein1.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="card-body">
+                        <h5 class="card-title">Detailed Protein Insights</h5>
+                        <p class="card-text">Understand protein quality and content for better dietary decisions aligned with your health goals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <img src="{{ url_for('static', filename='images/protein.jpg') }}" class="card-img-top" alt="Data-Driven Results">
+                    <div class="card-body">
+                        <h5 class="card-title">Comprehensive Nutritional Data</h5>
+                        <p class="card-text">Access a vast database of nutrients, vitamins, and minerals to maintain a balanced diet.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <img src="{{ url_for('static', filename='images/protein3.jpg') }}" class="card-img-top" alt="Data-Driven Results">
+                    <div class="card-body">
+                        <h5 class="card-title">Data-Driven Recommendations</h5>
+                        <p class="card-text">Leverage scientifically-backed insights to support a healthier lifestyle and achieve wellness goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
