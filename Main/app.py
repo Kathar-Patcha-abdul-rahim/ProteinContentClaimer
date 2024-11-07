@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import bcrypt
-from openpyxl.styles.builtins import calculation
 
 from Main.Backend import inputExtraction, loadData
 from Main.Backend.calculation import process_enhanced_data, perform_operation, display_results
