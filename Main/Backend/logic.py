@@ -1,22 +1,28 @@
 import re
 
-import static
-from sqlalchemy import false
+import nltk
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer
+
 
 from Main.Backend import inputExtraction, loadData
+
+# Initialize the lemmatizer
+lemmatizer = WordNetLemmatizer()
 
 # List of words to ignore during the final frequency count tie-breaking
 ignored_words = ['extruded', 'cooked', 'baked', 'red', 'green']
 
 flag = True
 
-# Function to convert a string into a list of words (tokens), ignoring specified words
-def tokenize_string(sample_str, ignored_words=ignored_words):
+# Function to tokenize and normalize words (using lemmatization)
+def tokenize_and_normalize(sample_str, ignored_words=ignored_words):
     tokens = re.findall(r'\b\w+\b', sample_str.lower())
-    # Filter out any tokens that are in the ignored words list
     if flag:
         tokens = [token for token in tokens if token not in ignored_words]
-    return tokens
+    # Normalize tokens using lemmatization
+    normalized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
+    return normalized_tokens
 
 # Function to generate all consecutive word combinations (phrases) from a list of tokens
 def generate_combinations(tokens):
@@ -28,12 +34,13 @@ def generate_combinations(tokens):
 
 # Function to find the best matching subcategory for a given sample string
 def find_best_match(sample, data_file):
-    sample_tokens = tokenize_string(sample)  # Ignore words during tokenization
-    flag = False
+    sample_tokens = tokenize_and_normalize(sample)  # Normalize tokens
+    flag = False  # Disable ignored words for further steps
     sample_combinations = generate_combinations(sample_tokens)
     best_matches = []
     max_matches = 0
 
+    # Initial match calculation
     for category, subcategory_map in data_file.items():
         for subcategory, racc_value in subcategory_map.items():
             matches = sum(1 for comb in sample_combinations if comb in subcategory.lower())
@@ -44,27 +51,30 @@ def find_best_match(sample, data_file):
             elif matches == max_matches:
                 best_matches.append((subcategory, racc_value))
 
-    print(f"List of best matches (before exact phrase check) for sample '{sample}':")
-    for subcat, racc in best_matches:
-        print(f" - Subcategory: {subcat}, RACC Value: {racc}")
-
+    # Sort by longest exact phrase match
     def exact_match_priority(subcat):
-        subcat_tokens = tokenize_string(subcat)
+        subcat_tokens = tokenize_and_normalize(subcat)
         longest_match_length = max(
-            (len(tokenize_string(comb)) for comb in sample_combinations if comb in subcat.lower()), default=0
+            (len(tokenize_and_normalize(comb)) for comb in sample_combinations if comb in subcat.lower()), default=0
         )
         return -longest_match_length
 
     if len(best_matches) > 1:
         best_matches.sort(key=lambda x: exact_match_priority(x[0]), reverse=True)
 
+        # Check if there is still a tie after sorting by longest match
         if len(best_matches) > 1 and exact_match_priority(best_matches[0][0]) == exact_match_priority(best_matches[1][0]):
             def token_occurrence_count(subcat):
-                subcat_tokens = tokenize_string(subcat)
+                subcat_tokens = tokenize_and_normalize(subcat)
                 token_count = sum(subcat_tokens.count(token) for token in sample_tokens if token not in ignored_words)
                 return token_count
 
-            best_match, best_racc_value = max(best_matches, key=lambda x: token_occurrence_count(x[0]))
+            # Boosting logic for specific token matches
+            def specific_match_boost(subcat):
+                subcat_tokens = tokenize_and_normalize(subcat)
+                return sum(1 for token in sample_tokens if token in subcat_tokens)
+
+            best_match, best_racc_value = max(best_matches, key=lambda x: (specific_match_boost(x[0]), token_occurrence_count(x[0])))
         else:
             best_match, best_racc_value = best_matches[0]
     else:

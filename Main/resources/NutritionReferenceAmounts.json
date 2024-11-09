@@ -95,8 +95,8 @@
         "Ready-to-eat breakfast cereals, puffed and coated, flaked, extruded, without fruit or nuts (weighing 20 g to 42 g per 250 mL), very high fibre cereals (with 28 g or more fibre per 100 g)",
         "Ready-to-eat breakfast cereals, fruit and nut type, granola (weighing 43 g or more per 250 mL) and biscuit type cereals",
         "Bran and wheat germ, pearl tapioca, milled flax, hemp and chia seeds",
-        "Flours and cornmeal, including rye, potato, corn, barley, sorghum, buckwheat flours and gluten-free blends, but not including nut and other flours listed in item O.4",
-        "Grains, such as rice or barley, including couscous and flavoured rice and grains",
+        "Flours and cornmeal, including rye, potato, corn, barley, sorghum, buckwheat flours and gluten-free blends, but not including nut and other flours listed in item O.4 pinto flour extruded pinto flour buckwheat flour",
+        "Grains, such as rice or barley, including couscous and flavoured rice and grains, wheat, wheat, oats raw",
         "Pastas, noodles, all varieties, including filled pastas, gnocchi, gluten-free alternatives, without sauce",
         "Pastas, dry and ready-to-eat, such as fried chow mein noodles",
         "Starch, such as cornstarch, potato starch, tapioca starch or wheat starch",
@@ -280,9 +280,9 @@
       "sub-categories": [
         "Tofu (bean curd), egg tofu, or tempeh, without sauce",
         "Tofu or tempeh with sauce, but excluding combination dishes",
-        "Beans, peas, and lentils, such as white beans, kidney beans, romano beans, soybeans, or chickpeas",
+        "Beans, peas, and lentils, such as white beans, kidney beans, romano beans, soybeans, or chickpeas, black bean",
         "Refried beans",
-        "Dried texturized soy protein and soy protein isolate"
+        "Dried texturized soy protein and soy protein isolate, hemp, hemp protein, hemp hearts"
       ],
       "RACC-Value": [
         85,
