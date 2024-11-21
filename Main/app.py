@@ -1,5 +1,7 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for, flash
+import time
+
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import bcrypt
@@ -238,9 +240,13 @@ def delete_user(user_id):
 
 @app.route('/logout')
 def logout():
-    # Handle logout logic (e.g., clearing the session)
+    # Clear the session to log the user out
+    session.clear()
+    # Flash a message to confirm logout
     flash('You have been logged out.', 'success')
+    # Redirect to the home page (or login page)
     return redirect(url_for('home'))
+
 
 
 if __name__ == '__main__':

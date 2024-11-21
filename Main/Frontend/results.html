@@ -5,48 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculation Results</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            background: url('https://your-image-url.com') no-repeat center center fixed; /* Protein-related HD background */
-            background-size: cover;
-            color: #fff;
+            color: #333;
             font-family: 'Arial', sans-serif;
+            background: #000;
         }
 
         h2 {
             margin-top: 20px;
             text-align: center;
-            color: #343a40;
+            color: #333;
         }
 
         .container {
             margin-top: 50px;
-            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            background-color: rgba(20, 20, 20, 0.6);
             border-radius: 10px;
             padding: 30px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            color: #e0e0e0;
         }
 
         .table {
             border-radius: 0.5rem;
             overflow: hidden;
-            background-color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
         }
 
         .table thead th {
-            background-color: #007bff;
+            background-color: rgba(0, 123, 255, 0.8);
             color: #ffffff;
         }
 
         .table tbody tr:hover {
-            background-color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .alert {
             border-radius: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
         }
 
+        /* Download Button */
         .download-btn {
             position: absolute;
             top: 20px;
@@ -61,8 +78,10 @@
             font-size: 16px;
             color: #fff;
             text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
+        /* Back Button */
         .back-btn {
             margin-top: 30px;
             text-align: center;
@@ -75,68 +94,124 @@
             font-size: 16px;
             color: #fff;
             text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Container for top left buttons */
+        .top-left-buttons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* Home Button Styling */
+        .home-btn {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Logout Button Styling */
+        .logout-btn {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Calculation Results</h2>
+<video class="background-video" autoplay loop muted>
+    <source src="{{ url_for('static', filename='videos/results.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
-        {% if results %}
-            <div class="table-responsive" style="text-align: center">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Sample</th>
-                            <th>Protein</th>
-                            <th>RACC</th>
-                            <th>PDCAAS Claim</th>
-                            <th>PDCAAS Claim Status</th>
-                            <th>IVPDCAAS Claim</th>
-                            <th>IVPDCAAS Claim Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for result in results %}
-                            <tr>
-                                <td>{{ result.sample }}</td>
-                                <td>{{ '%.2f' | format(result.protein) }}g</td>
-                                <td>{{ result.racc }}g</td>
-                                <td>{{ '%.2f' | format(result.pdcaas_claim) }}</td>
-                                <td>{{ result.pdcaas_claim_status }}</td>
-                                <td>{{ '%.2f' | format(result.ivpdcaas_claim) }}</td>
-                                <td>{{ result.ivpdcaas_claim_status }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        {% elif result %}
-            <div class="alert alert-info">
-                <strong>Sample:</strong> {{ result.sample }}<br>
-                <strong>Protein:</strong> {{ result.protein }}g<br>
-                <strong>RACC:</strong> {{ result.racc }}g<br>
-                <strong>PDCAAS Claim:</strong> {{ '%.2f' | format(result.pdcaas_claim) }}<br>
-                <strong>PDCAAS Claim Status:</strong> {{ result.pdcaas_claim_status }}<br>
-                <strong>IVPDCAAS Claim:</strong> {{ '%.2f' | format(result.ivpdcaas_claim) }}<br>
-                <strong>IVPDCAAS Claim Status:</strong> {{ result.ivpdcaas_claim_status }}
-            </div>
-        {% else %}
-            <div class="alert alert-warning">No results to display.</div>
-        {% endif %}
+<div class="top-left-buttons">
+    <!-- Home Button -->
+    <a href="/" class="home-btn" title="Home">
+        <i class="fas fa-home"></i>
+    </a>
 
-        <div class="back-btn">
-            <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
-        </div>
+    <!-- Logout Button -->
+    <a href="{{ url_for('logout') }}" class="logout-btn" title="Logout">
+        <i class="fas fa-door-open"></i>
+    </a>
+</div>
+
+<!-- Excel Download Button -->
+<div class="download-btn">
+    <a href="{{ url_for('download_excel') }}" class="btn btn-success">Download Excel</a>
+</div>
+
+<div class="container">
+    <h2 style="color: white;">Calculation Results</h2>
+
+    {% if results %}
+    <div class="table-responsive" style="text-align: center">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Sample</th>
+                <th>Protein</th>
+                <th>RACC</th>
+                <th>PDCAAS Claim</th>
+                <th>PDCAAS Claim Status</th>
+                <th>IVPDCAAS Claim</th>
+                <th>IVPDCAAS Claim Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.sample }}</td>
+                <td>{{ '%.2f' | format(result.protein) }}g</td>
+                <td>{{ result.racc }}g</td>
+                <td>{{ '%.2f' | format(result.pdcaas_claim) }}</td>
+                <td>{{ result.pdcaas_claim_status }}</td>
+                <td>{{ '%.2f' | format(result.ivpdcaas_claim) }}</td>
+                <td>{{ result.ivpdcaas_claim_status }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
-
-    <!-- Excel Download Button -->
-    <div class="download-btn">
-        <a href="{{ url_for('download_excel') }}" class="btn btn-success">Download Excel</a>
+    {% elif result %}
+    <div class="alert alert-info">
+        <strong>Sample:</strong> {{ result.sample }}<br>
+        <strong>Protein:</strong> {{ result.protein }}g<br>
+        <strong>RACC:</strong> {{ result.racc }}g<br>
+        <strong>PDCAAS Claim:</strong> {{ '%.2f' | format(result.pdcaas_claim) }}<br>
+        <strong>PDCAAS Claim Status:</strong> {{ result.pdcaas_claim_status }}<br>
+        <strong>IVPDCAAS Claim:</strong> {{ '%.2f' | format(result.ivpdcaas_claim) }}<br>
+        <strong>IVPDCAAS Claim Status:</strong> {{ result.ivpdcaas_claim_status }}
     </div>
+    {% else %}
+    <div class="alert alert-warning">No results to display.</div>
+    {% endif %}
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="back-btn">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

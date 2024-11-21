@@ -5,59 +5,357 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding-top: 40px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 20px auto 40px;
+        }
+
+        .tile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tile {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 250px;
+            height: 250px;
+        }
+
+        .tile:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .tile-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .tile-description {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        .btn-custom {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            background-color: #4CAF50;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #45a049;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-section {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        /* Loading popup styles */
+        .loading-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 10000;
+            flex-direction: column;
+        }
+
+        .loading-popup .spinner {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Container for top left buttons */
+        .top-left-buttons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* Home Button Styling */
+        .home-btn {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Logout Button Styling */
+        .logout-btn {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
 <body>
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Select Input Method</h2>
-    <div class="d-flex justify-content-center mb-4">
-        <button class="btn btn-primary me-3" onclick="showForm('manual')">Manual Input</button>
-        <button class="btn btn-primary" onclick="showForm('file')">Upload Excel File</button>
+
+<div class="top-left-buttons">
+    <!-- Home Button -->
+    <a href="/" class="home-btn" title="Home">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Logout Button -->
+    <a href="{{ url_for('logout') }}" class="logout-btn" title="Logout">
+        <i class="fas fa-door-open"></i>
+    </a>
+</div>
+
+<video class="background-video" autoplay loop muted>
+    <source src="{{ url_for('static', filename='videos/DNAVideo.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
+<div class="container">
+    <h2>Welcome to Your Dashboard</h2>
+    <p class="intro-text">Here, you have two options to enter data for analysis. You can either input the data manually,
+        ideal for small entries, or upload an Excel file to process larger datasets quickly and efficiently. Select the
+        desired method to proceed.</p>
+
+    <div class="tile-container">
+        <div class="tile" onclick="showForm('manual')">
+            <div class="tile-title">Manual Input</div>
+            <div class="tile-description">Fill out each field in the form to submit data manually. This method allows
+                you to enter values precisely as needed.
+            </div>
+        </div>
+
+        <div class="tile" onclick="showForm('file')">
+            <div class="tile-title">Upload Excel File</div>
+            <div class="tile-description">Select an Excel file (.xls, .xlsx) to upload your data instantly. The file
+                will be processed and displayed for further analysis.
+            </div>
+        </div>
     </div>
 
-    <!-- Manual Input Form -->
-    <form id="manualInputForm" class="form-section" action="/process_manual" method="POST" style="display: none;">
-        <h3 class="text-center">Manual Input</h3>
-        <div class="mb-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" id="name" name="name" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="pdcaas" class="form-label">PDCAAS:</label>
-            <input type="number" id="pdcaas" name="pdcaas" class="form-control" step="0.01" required>
-        </div>
-        <div class="mb-3">
-            <label for="protein_percentage" class="form-label">Protein Percentage (%):</label>
-            <input type="number" id="protein_percentage" name="protein_percentage" class="form-control" step="0.01" required>
-        </div>
-        <div class="mb-3">
-            <label for="ivpdcaas" class="form-label">IVPDCASS:</label>
-            <input type="number" id="ivpdcaas" name="ivpdcaas" class="form-control" step="0.01" required>
-        </div>
-        <div class="text-center">
-            <input type="submit" class="btn btn-success" value="Submit">
-        </div>
-    </form>
+    <div class="form-container" style="align-content: center; align-items: center;">
+        <form id="manualInputForm" class="form-section" action="/process_manual" method="POST" style="display: none;">
+            <h3 class="text-center text-white">Manual Input</h3>
+            <div class="mb-3">
+                <label for="name" class="form-label text-white">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="pdcaas" class="form-label text-white">PDCAAS:</label>
+                <input type="number" id="pdcaas" name="pdcaas" class="form-control" step="0.01" required>
+            </div>
+            <div class="mb-3">
+                <label for="protein_percentage" class="form-label text-white">Protein Percentage (%):</label>
+                <input type="number" id="protein_percentage" name="protein_percentage" class="form-control" step="0.01"
+                       required>
+            </div>
+            <div class="mb-3">
+                <label for="ivpdcaas" class="form-label text-white">IVPDCAAS:</label>
+                <input type="number" id="ivpdcaas" name="ivpdcaas" class="form-control" step="0.01" required>
+            </div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-custom" value="Submit">
+            </div>
+        </form>
 
-    <!-- File Upload Form -->
-    <form id="fileUploadForm" class="form-section" action="/upload_excel" method="POST" enctype="multipart/form-data" style="display: none;">
-        <h3 class="text-center">Upload Excel File</h3>
-        <div class="mb-3">
-            <label for="excel_file" class="form-label">Upload Excel File:</label>
-            <input type="file" id="excel_file" name="excel_file" accept=".xlsx,.xls" class="form-control" required>
-            <div class="form-text">Only Excel files (.xls, .xlsx) are allowed</div>
-        </div>
-        <div class="text-center">
-            <input type="submit" class="btn btn-success" value="Upload">
-        </div>
-    </form>
+        <form id="fileUploadForm" class="form-section" action="/upload_excel" method="POST"
+              enctype="multipart/form-data" style="display: none;">
+            <h3 class="text-center text-white">Upload Excel File</h3>
+            <div class="mb-3">
+                <label for="excel_file" class="form-label text-white">Upload Excel File:</label>
+                <input type="file" id="excel_file" name="excel_file" accept=".xlsx,.xls" class="form-control" required>
+                <div class="form-text text-white">Only Excel files (.xls, .xlsx) are allowed</div>
+            </div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-custom" value="Upload" onclick="showLoadingPopup(event)">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Loading popup -->
+<div class="loading-popup" id="loadingPopup">
+    <div class="spinner"><i class="fas fa-hourglass-half"></i></div>
+    <div class="loading-text" id="loadingText"></div>
 </div>
 
 <script>
     function showForm(option) {
         document.getElementById("manualInputForm").style.display = option === 'manual' ? 'block' : 'none';
         document.getElementById("fileUploadForm").style.display = option === 'file' ? 'block' : 'none';
+
+        // Scroll to the form smoothly
+        document.getElementById(option === 'manual' ? 'manualInputForm' : 'fileUploadForm').scrollIntoView({behavior: 'smooth'});
     }
+
+    const quotes = [
+        "Protein is the building block of life.",
+        "The right protein fuels the best results.",
+        "Optimize performance with complete proteins.",
+        "Balanced nutrition means better gains.",
+        "A strong body starts with protein.",
+        "Plant-based or animal, protein fuels all.",
+        "Sustain your energy with high-quality proteins.",
+        "Protein supports muscle repair and growth.",
+        "High-protein diets can help manage hunger.",
+        "Fuel your fitness journey with protein power.",
+        "Amino acids from protein are essential for health.",
+        "Protein is a crucial nutrient for an active lifestyle.",
+        "Healthy aging starts with sufficient protein.",
+        "Protein helps your body recover after workouts.",
+        "Good nutrition includes a balance of protein.",
+        "Protein can support immune health.",
+        "Energy levels improve with protein in every meal.",
+        "Proteins are vital for a strong immune system.",
+        "Protein shakes are convenient post-workout fuel.",
+        "Every cell in your body needs protein.",
+        "Nourish your body and mind with adequate protein.",
+        "Protein helps build and maintain lean muscle.",
+        "Boost metabolism by incorporating protein.",
+        "Proteins are key to repairing body tissues.",
+        "Balance carbs and protein for sustained energy.",
+        "Protein consumption supports mental clarity.",
+        "Protein from diverse sources provides complete nutrition.",
+        "Protein enhances endurance and performance.",
+        "The right protein intake aids in weight management."
+    ];
+
+    function showLoadingPopup(event) {
+        event.preventDefault();  // Prevent form submission
+
+        const loadingPopup = document.getElementById("loadingPopup");
+        const loadingText = document.getElementById("loadingText");
+
+        // Show loading popup
+        loadingPopup.style.display = "flex";
+
+        // Function to select a random quote
+        function getRandomQuote() {
+            return quotes[Math.floor(Math.random() * quotes.length)];
+        }
+
+        // Set the initial random quote
+        loadingText.innerText = getRandomQuote();
+
+        // Start an interval to update the quote every 5 seconds
+        const updateQuoteInterval = setInterval(() => {
+            loadingText.innerText = getRandomQuote();
+        }, 5000); // 5 seconds
+
+        // After a short delay, submit the form and clear the interval
+        setTimeout(() => {
+            clearInterval(updateQuoteInterval);  // Stop updating quotes
+            document.getElementById("fileUploadForm").submit();  // Submit the form
+        }, 5000);  // 5-second delay before submitting
+    }
+
 </script>
 
 </body>
