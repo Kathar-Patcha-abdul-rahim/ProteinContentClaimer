@@ -170,7 +170,7 @@
 
         /* Home Button Styling */
         .home-btn {
-            color: white;
+            color: blue;
             font-size: 24px;
             text-decoration: none;
             padding: 10px;
@@ -184,7 +184,7 @@
 
         /* Logout Button Styling */
         .logout-btn {
-            color: white;
+            color: red;
             font-size: 24px;
             text-decoration: none;
             padding: 10px;
@@ -195,6 +195,131 @@
         .logout-btn:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
+
+        /* Container for top right buttons */
+        .top-right-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* About Us Button Styling */
+        .about-btn {
+            color: blueviolet;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .about-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Same hover effect as left buttons */
+        }
+
+        /* Feedback Button Styling */
+        .feedback-btn {
+            color: #ff6347; /* Tomato color for feedback */
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Same hover effect as left buttons */
+        }
+
+
+        /* Explanation Tile Styling (New) */
+        .tile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        /* New Tile for Protein Claim Calculation */
+        .explanation-tile {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+            padding: 30px 20px; /* Added padding for left and right sides */
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            width: 80%; /* Set width to 80% of the container */
+            max-width: 1000px; /* Ensure it doesn't become too wide */
+            height: auto; /* Adjusted to fit content */
+            min-height: 350px;
+            margin: 0 auto 30px; /* Added margin-bottom for space after the tile */
+        }
+
+        .tile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        /* Add margin-bottom to the tile container to ensure space after */
+        .tile-container > .explanation-tile:last-child {
+            margin-bottom: 50px; /* Adjust this value as needed */
+        }
+
+        .tile-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #4CAF50; /* Green for a positive and natural vibe */
+        }
+
+        .tile-description {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .tile-formula {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #ffb74d; /* A warm color for the formula */
+            margin-bottom: 15px;
+        }
+
+        .tile-criteria {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #ffcc00; /* Bright yellow for the claim categories */
+            margin-bottom: 15px;
+        }
+
+        .tile-quote {
+            font-size: 1rem;
+            font-style: italic;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        /* Hover effect for quote */
+        .tile-quote:hover {
+            color: #ffcc00; /* Make the quote glow when hovered */
+        }
+
+
     </style>
 </head>
 <body>
@@ -211,6 +336,22 @@
         <i class="fas fa-door-open"></i>
     </a>
 </div>
+
+<!-- Container for top right buttons -->
+<div class="top-right-buttons">
+    <!-- About Us Button -->
+    <a href="{{ url_for('about') }}" class="about-btn" title="About Us">
+        <i class="fas fa-users"></i>
+    </a>
+
+
+    <!-- Feedback Form Button -->
+    <a href="{{ url_for('feedback') }}" class="feedback-btn" title="Feedback Form">
+        <i class="fas fa-comment"></i>
+    </a>
+
+</div>
+
 
 <video class="background-video" autoplay loop muted>
     <source src="{{ url_for('static', filename='videos/DNAVideo.mp4') }}" type="video/mp4">
@@ -234,7 +375,7 @@
 
         <div class="tile" onclick="showForm('file')">
             <div class="tile-title">Upload Excel File</div>
-            <div class="tile-description">Select an Excel file (.xls, .xlsx) to upload your data instantly. The file
+            <div class="tile-description">Select an Excel file to upload. The file
                 will be processed and displayed for further analysis.
             </div>
         </div>
@@ -279,6 +420,36 @@
         </form>
     </div>
 </div>
+
+<div class="tile-container">
+    <!-- New Explanation Tile (Protein Claim Formula) -->
+    <div class="tile explanation-tile">
+        <div class="tile-title">Protein Claim Calculation</div>
+        <div class="tile-description">
+            Based on the PDCAAS (Protein Digestibility Corrected Amino Acid Score) and protein percentage, we calculate
+            whether a protein source meets regulatory requirements.
+            The formula below allows us to evaluate whether the protein qualifies for a claim based on set thresholds.
+        </div>
+        <div class="tile-formula">
+            <strong>Protein Claim Formula:</strong><br>
+            RACC = (Protein Percentage × PDCAAS) ÷ 100
+        </div>
+        <div class="tile-criteria">
+            <strong>Protein Claim Categories:</strong><br>
+            If RACC < 5 → No Claim<br>
+            5 ≤ RACC < 10 → Good Source<br>
+            RACC ≥ 10 → Excellent Source
+        </div>
+        <div class="tile-description">
+            The RACC value determines the protein source's eligibility for claims. A higher RACC indicates a better
+            protein quality and makes the source eligible for "Good" or "Excellent" source labels.
+        </div>
+        <div class="tile-quote">
+            "Protein is not just a nutrient; it’s a building block for health and performance."
+        </div>
+    </div>
+</div>
+
 
 <!-- Loading popup -->
 <div class="loading-popup" id="loadingPopup">

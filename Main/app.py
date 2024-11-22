@@ -14,6 +14,7 @@ from Main.Backend.calculation import process_enhanced_data, perform_operation, d
 from Main.Backend.logic import process_data, perform
 
 
+
 # Create a Flask app
 app = Flask(__name__, template_folder='Frontend')
 
@@ -246,6 +247,14 @@ def logout():
     flash('You have been logged out.', 'success')
     # Redirect to the home page (or login page)
     return redirect(url_for('home'))
+
+@app.route('/about')
+def about():
+    return render_template('aboutus.html')
+
+@app.route('/feedback')
+def feedback():
+    return render_template('feedback.html')
 
 
 

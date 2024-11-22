@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .card {
+            background-color: #333;
+            border: none;
+            margin: 20px 0;
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-top {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+        }
+
+        .card-title {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .card-text {
+            text-align: center;
+        }
+
+        blockquote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #ddd;
+            margin: 10px 0;
+            padding-left: 20px;
+            border-left: 4px solid #007bff;
+        }
+
+        /* Container for top left buttons */
+        .top-left-buttons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* Home Button Styling */
+        .home-btn {
+            color: blue;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Logout Button Styling */
+        .logout-btn {
+            color: red;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Container for top-right buttons */
+        .top-right-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* About Us Button Styling */
+        .about-btn {
+            color: blueviolet; /* Purple color for the About Us button */
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .about-btn:hover {
+            background-color: rgba(138, 43, 226, 0.2); /* Subtle hover effect */
+        }
+
+        /* Dashboard Button Styling */
+        .dashboard-btn {
+            color: #00c4cc; /* Cyan color for the Dashboard button */
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard-btn:hover {
+            background-color: rgba(0, 196, 204, 0.2); /* Subtle hover effect */
+        }
+
+        /* Feedback Button Styling */
+        .feedback-btn {
+            color: #ff6347; /* Tomato color for feedback */
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Same hover effect as left buttons */
+        }
+
+    </style>
+</head>
+<body>
+<div class="top-left-buttons">
+    <!-- Home Button -->
+    <a href="/" class="home-btn" title="Home">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Logout Button -->
+    <a href="{{ url_for('logout') }}" class="logout-btn" title="Logout">
+        <i class="fas fa-door-open"></i>
+    </a>
+</div>
+
+<!-- Container for top right buttons -->
+<div class="top-right-buttons">
+    <!-- About Us Button -->
+    <a href="{{ url_for('about') }}" class="about-btn" title="About Us">
+        <i class="fas fa-users"></i>
+    </a>
+
+    <!-- Feedback Form Button -->
+    <a href="{{ url_for('feedback') }}" class="feedback-btn" title="Feedback Form">
+        <i class="fas fa-comment"></i>
+    </a>
+
+    <!-- Dashboard Button -->
+    <a href="{{ url_for('dashboard') }}" class="dashboard-btn" title="Dashboard">
+        <i class="fas fa-tachometer-alt"></i>
+    </a>
+</div>
+
+<div class="container">
+    <h1 class="text-center my-5">Meet Our Team</h1>
+    <div class="row">
+        <!-- Single Tile Row -->
+        <div class="col-12">
+            <div class="card">
+                <img src="{{ url_for('static', filename='Profile/Basha.jpg') }}" class="card-img-top" alt="Person 1">
+                <div class="card-body">
+                    <h5 class="card-title">Kathar Patcha Abdul Rahim</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Team Lead - Software development Engineer in Test</h6>
+                    <blockquote>
+                        "A passionate Software Development Engineer in Test (SDET) pursuing a Master of Applied
+                        Computing (AI Stream) at the
+                        University of Windsor,
+                        with over three years of experience in software development, test automation, and artificial
+                        intelligence. Proficient in Java, Python, C, data structures, algorithms, and design patterns,
+                        Kathar specializes in developing AI-driven solutions and optimizing workflows. Skilled in
+                        automation testing with tools like Selenium and frameworks like TestNG,
+                        Kathar also brings expertise in cloud-based technologies and team leadership.
+                        With a strong focus on AI, Kathar excels in creating intelligent systems that enhance software
+                        quality and efficiency."
+                    </blockquote>
+                    <p class="card-text">
+                        Please visit my GitHub to know about my projects: <a
+                            href="https://github.com/Kathar-Patcha-abdul-rahim" target="_blank" style="color: #00bcd4;">GitHub</a>
+                    </p>
+                    <p class="card-text">
+                        Please visit my Portfolio to know about me: <a
+                            href="https://kathar-patcha-abdul-rahim.github.io/frontend" target="_blank"
+                            style="color: #00bcd4;">Portfolio</a>
+                    </p>
+                    <p class="card-text">
+                        LinkedIn Profile: <a
+                            href="https://www.linkedin.com/in/katharpatcha99/" target="_blank" style="color: #00bcd4;">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Tile Row -->
+        <div class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='Profile/Lila.jpg') }}" class="card-img-top" alt="Person 2">
+                <div class="card-body">
+                    <h5 class="card-title">La Li</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Front End Developer</h6>
+                    <blockquote>
+                        "An innovative and driven developer pursuing a Master of Applied Computing at the University of
+                        Windsor.
+                        She has a solid background in both frontend and backend technologies, with a proven ability to
+                        work cross-functionally to build robust, scalable solutions.
+                        Experienced in maintaining and supporting new modules, La collaborates effectively with team
+                        members and contributes to high-quality cloud-based solutions.
+                    </blockquote>
+                    <p class="card-text">
+                        LinkedIn Profile: <a
+                            href="https://www.linkedin.com/in/la-li-242b69280/" target="_blank" style="color: #00bcd4;">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='Profile/Nishat.jpg') }}" class="card-img-top" alt="Person 3">
+                <div class="card-body">
+                    <h5 class="card-title">Nishat Tasnim Haque</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Front End Developer</h6>
+                    <blockquote>
+                        "A Master of Applied Computing student with over three years of experience in software
+                        development, data analysis, and network systems.
+                        Proficient in Python, Java, and SQL, I have a strong background in automating processes and
+                        ensuring quality.
+                        My expertise in data analytics and quality assurance will be essential for ensuring accuracy in
+                        the calculation and compliance process for this project."
+                    </blockquote>
+                    <p class="card-text">
+                        LinkedIn Profile: <a
+                            href="https://www.linkedin.com/in/nishattasnimhaque/" target="_blank"
+                            style="color: #00bcd4;">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Another Two Tile Row -->
+        <div class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='Profile/Maruf.jpg') }}" class="card-img-top" alt="Person 5">
+                <div class="card-body">
+                    <h5 class="card-title">Maruf Ahmed</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Backend Developer</h6>
+                    <blockquote>
+                        "A Master of Applied Computing student with a focus on cybersecurity and software development.
+                        With over three years of experience in digital forensics, vulnerability assessments, and process
+                        automation, Maruf is skilled in Python, C, and Java.
+                        His strong background in data extraction and security will play a key role in automating the
+                        evaluation of protein content claims in this project."
+                    </blockquote>
+                    <p class="card-text">
+                        LinkedIn Profile: <a
+                            href="https://www.linkedin.com/in/maruf-ahmed-89b8a81b6/" target="_blank"
+                            style="color: #00bcd4;">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='Profile/Khalid.jpg') }}" class="card-img-top" alt="Person 6">
+                <div class="card-body">
+                    <h5 class="card-title">Khalid Bagwan</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Backend Developer</h6>
+                    <blockquote>
+                        "A skilled software developer with a strong foundation in computer science, currently pursuing a
+                        Master of Applied Computing at the University of Windsor. My expertise spans programming
+                        languages such as C, Python, C++, PHP, and Java, along with
+                        proficiency in technologies like JavaScript, HTML, and CSS, database management and working in
+                        UNIX, and Linux environments.
+                    </blockquote>
+                    <p class="card-text">
+                        LinkedIn Profile: <a
+                            href="https://www.linkedin.com/in/khalidbagwan/" target="_blank" style="color: #00bcd4;">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
