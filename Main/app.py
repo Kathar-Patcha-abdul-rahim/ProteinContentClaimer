@@ -12,6 +12,7 @@ from flask import send_file
 from Main.Backend import inputExtraction, loadData
 from Main.Backend.calculation import process_enhanced_data, perform_operation, display_results
 from Main.Backend.logic import process_data, perform
+from flask_socketio import SocketIO, send
 
 
 
@@ -32,6 +33,9 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # Initialize the database and migration
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
+# Initialize Flask-SocketIO for real-time chat
+socketio = SocketIO(app)
 
 # Define the User model
 class User(db.Model):
@@ -61,6 +65,8 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password):
+            session['username'] = user.username  # Store the username in session
+            session.permanent = True  # Make the session permanent
             if user.is_admin:
                 return redirect(url_for('admin_dashboard'))
             else:
@@ -68,6 +74,7 @@ def login():
         else:
             flash('Invalid username or password', 'danger')
     return render_template('login.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -256,7 +263,24 @@ def about():
 def feedback():
     return render_template('feedback.html')
 
+# Global chat
+@app.route('/chat')
+def chat():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    return render_template('chat.html', username=session['username'])
+
+@socketio.on('message')
+def handle_message(msg):
+    username = session.get('username')  # Ensure the username is being retrieved from the session
+    # Send both the username and the message to the frontend
+    send({'username': username, 'message': msg}, broadcast=True)
 
 
+
+
+# Running the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug=True, allow_unsafe_werkzeug=True)
+
+
