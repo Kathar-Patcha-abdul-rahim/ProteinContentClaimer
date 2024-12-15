@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #000000, #1a1a1a); /* Black gradient background */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: #fff;
+        }
+
+        .card {
+            background: rgba(20, 20, 20, 0.95); /* Slightly transparent black */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        }
+
+        .form-control {
+            background: #121212; /* Darker input background */
+            color: #ffffff; /* Bright input text color */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6); /* Light placeholder text */
+        }
+
+        .form-control:focus {
+            background: #1f1f1f;
+            color: #ffffff;
+            border-color: #6e8efb;
+            box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
+        }
+
+        label {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8); /* Slightly muted white */
+        }
+
+        h2 {
+            color: #6e8efb;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: #6e8efb;
+            border: none;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #5a7bd8;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #6e8efb, 0 0 20px rgba(110, 142, 251, 0.5);
+        }
+
+        .success-message {
+            color: #28a745;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 30px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Container for top left buttons */
+        .top-left-buttons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* Home Button Styling */
+        .home-btn {
+            color: blue;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Logout Button Styling */
+        .logout-btn {
+            color: red;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Container for top-right buttons */
+        .top-right-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* About Us Button Styling */
+        .about-btn {
+            color: blueviolet; /* Purple color for the About Us button */
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .about-btn:hover {
+            background-color: rgba(138, 43, 226, 0.2); /* Subtle hover effect */
+        }
+
+        /* Dashboard Button Styling */
+        .dashboard-btn {
+            color: #00c4cc; /* Cyan color for the Dashboard button */
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard-btn:hover {
+            background-color: rgba(0, 196, 204, 0.2); /* Subtle hover effect */
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="top-left-buttons">
+    <!-- Home Button -->
+    <a href="/" class="home-btn" title="Home">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Logout Button -->
+    <a href="{{ url_for('logout') }}" class="logout-btn" title="Logout">
+        <i class="fas fa-door-open"></i>
+    </a>
+</div>
+
+<!-- Container for top right buttons -->
+<div class="top-right-buttons">
+    <!-- About Us Button -->
+    <a href="{{ url_for('about') }}" class="about-btn" title="About Us">
+        <i class="fas fa-users"></i>
+    </a>
+
+    <!-- Dashboard Button -->
+    <a href="{{ url_for('dashboard') }}" class="dashboard-btn" title="Dashboard">
+        <i class="fas fa-tachometer-alt"></i>
+    </a>
+</div>
+<div class="card">
+    <h2>We Value Your Feedback</h2>
+    <form id="feedback-form">
+        <div class="mb-3">
+            <label for="from_name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="from_name" name="from_name" placeholder="Enter your name"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="email_id" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email_id" name="email_id" placeholder="Enter your email"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Your Feedback:</label>
+            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Share your thoughts..."
+                      required></textarea>
+        </div>
+        <button type="button" class="btn btn-primary w-100" onclick="SendMail()">Submit</button>
+        <div id="success-msg" class="success-message" style="display: none;">Thank you for your feedback!</div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    // Initialize EmailJS
+    (function () {
+        emailjs.init("sFR9ltzbtSLF6tkjI"); // Replace with your actual Public Key
+    })();
+
+    function SendMail() {
+        // Retrieve input values
+        const name = document.getElementById('from_name').value.trim();
+        const email = document.getElementById('email_id').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        // Validate inputs
+        if (!name) {
+            alert("Please enter your name.");
+            return;
+        }
+        if (!email || !validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+        if (!message) {
+            alert("Please enter your feedback.");
+            return;
+        }
+
+        const params = {from_name: name, email_id: email, message: message};
+
+        // Send email via EmailJS
+        emailjs.send("service_2p6k65m", "template_wccvl0a", params) // Replace with actual IDs
+            .then(function (response) {
+                document.getElementById('feedback-form').reset(); // Reset form
+                document.getElementById('success-msg').style.display = 'block'; // Show success message
+                setTimeout(() => {
+                    document.getElementById('success-msg').style.display = 'none'; // Hide message after 3 seconds
+                }, 3000);
+            })
+            .catch(function (error) {
+                alert("Failed to send feedback. Error: " + JSON.stringify(error));
+            });
+    }
+
+    // Helper function to validate email format
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
