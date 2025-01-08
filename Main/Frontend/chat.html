@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0D1117;
+            color: #C9D1D9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            background: #161B22;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        header {
+            background: #21262D;
+            color: #C9D1D9;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        header .logout {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: none;
+            border: 1px solid #C9D1D9;
+            color: #C9D1D9;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        header .logout:hover {
+            background: #C9D1D9;
+            color: #0D1117;
+        }
+
+        #messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #0D1117;
+        }
+
+        #messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #messages::-webkit-scrollbar-thumb {
+            background: #484F58;
+            border-radius: 4px;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .message.mine {
+            flex-direction: row-reverse;
+        }
+
+        .bubble {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 10px;
+            word-wrap: break-word;
+            font-size: 0.9rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bubble.mine {
+            border-top-right-radius: 0;
+        }
+
+        .bubble.theirs {
+            border-top-left-radius: 0;
+        }
+
+        .bubble .username {
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 15px;
+            background: #161B22;
+            border-top: 1px solid #21262D;
+        }
+
+        #message-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #21262D;
+            border-radius: 20px;
+            background: #0D1117;
+            color: #C9D1D9;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        #message-input::placeholder {
+            color: #6E7681;
+        }
+
+        #send-button {
+            background: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        #send-button:hover {
+            background: #2563EB;
+        }
+
+        /* Container for top left buttons */
+        .top-left-buttons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* Home Button Styling */
+        .home-btn {
+            color: blue;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Logout Button Styling */
+        .logout-btn {
+            color: red;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Container for top right buttons */
+        .top-right-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            z-index: 10;
+        }
+
+        /* About Us Button Styling */
+        .about-btn {
+            color: blueviolet;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .about-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Same hover effect as left buttons */
+        }
+
+        /* Feedback Button Styling */
+        .feedback-btn {
+            color: #ff6347; /* Tomato color for feedback */
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Same hover effect as left buttons */
+        }
+
+        /* Dashboard Button Styling */
+        .dashboard-btn {
+            color: #00c4cc; /* Cyan color for the Dashboard button */
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard-btn:hover {
+            background-color: rgba(0, 196, 204, 0.2); /* Subtle hover effect */
+        }
+
+    </style>
+</head>
+<body>
+<div class="top-left-buttons">
+    <!-- Home Button -->
+    <a href="/" class="home-btn" title="Home">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Logout Button -->
+    <a href="{{ url_for('logout') }}" class="logout-btn" title="Logout">
+        <i class="fas fa-door-open"></i>
+    </a>
+</div>
+
+<!-- Container for top right buttons -->
+<div class="top-right-buttons">
+    <!-- About Us Button -->
+    <a href="{{ url_for('about') }}" class="about-btn" title="About Us">
+        <i class="fas fa-users"></i>
+    </a>
+
+
+    <!-- Feedback Form Button -->
+    <a href="{{ url_for('feedback') }}" class="feedback-btn" title="Feedback Form">
+        <i class="fas fa-comment"></i>
+    </a>
+
+    <!-- Dashboard Button -->
+    <a href="{{ url_for('dashboard') }}" class="dashboard-btn" title="Dashboard">
+        <i class="fas fa-tachometer-alt"></i>
+    </a>
+
+</div>
+<div class="chat-container">
+    <header>
+        Global Chat
+        <button class="logout" onclick="location.href='/logout'">Logout</button>
+    </header>
+    <div id="messages"></div>
+    <div class="input-container">
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button id="send-button">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+</div>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script>
+    const socket = io.connect('http://' + document.domain + ':' + location.port);
+    const userColors = {}; // Store unique colors for users
+    const colorPalette = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'];
+    const currentUser = '{{ username }}'; // Inject the current user
+
+    // Assign or retrieve a unique color for a user
+    function getColorForUser(username) {
+        if (!userColors[username]) {
+            userColors[username] = colorPalette[Object.keys(userColors).length % colorPalette.length];
+        }
+        return userColors[username];
+    }
+
+    // Append messages to the chat window
+    socket.on('message', function (data) {
+        const messagesContainer = document.getElementById('messages');
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        if (data.username === currentUser) {
+            messageDiv.classList.add('mine');
+        }
+
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.classList.add('bubble');
+        bubbleDiv.classList.add(data.username === currentUser ? 'mine' : 'theirs');
+        bubbleDiv.style.background = getColorForUser(data.username);
+
+        const usernameSpan = document.createElement('span');
+        usernameSpan.classList.add('username');
+        usernameSpan.textContent = data.username;
+
+        const messageText = document.createTextNode(data.message);
+
+        bubbleDiv.appendChild(usernameSpan);
+        bubbleDiv.appendChild(messageText);
+        messageDiv.appendChild(bubbleDiv);
+
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
+    });
+
+    // Send messages
+    document.getElementById('send-button').onclick = function () {
+        const messageInput = document.getElementById('message-input');
+        const message = messageInput.value.trim();
+        if (message) {
+            socket.send(message);
+            messageInput.value = '';
+        }
+    };
+
+    // Send messages on Enter key
+    document.getElementById('message-input').addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            document.getElementById('send-button').click();
+        }
+    });
+</script>
+</body>
+</html>

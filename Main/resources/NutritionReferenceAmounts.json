@@ -557,6 +557,462 @@
         60,
         100
       ]
+    },
+    {
+      "Category": "Bakery Products",
+      "sub-categories": [
+        "Bagels, toaster pastries, muffins (excluding English muffins)",
+        "Biscuits, croissants, tortillas, soft bread sticks, soft pretzels, corn bread, hush puppies, scones, crumpets, English muffins",
+        "Breads (excluding sweet quick type), rolls",
+        "Brownies",
+        "Cakes, heavyweight (e.g., cheesecake, fruit/nut/vegetable cakes with ≥35% content)",
+        "Cakes, mediumweight (e.g., cupcakes, jelly rolls, Boston cream pie)",
+        "Cakes, lightweight (e.g., angel food, chiffon, sponge cakes)",
+        "Coffee cakes, crumb cakes, doughnuts, Danish, sweet rolls, sweet quick-type breads",
+        "Cookies",
+        "Crackers not used as snacks (e.g., melba toast, ice cream cones)",
+        "Crackers used as snacks",
+        "Croutons",
+        "Eggroll, dumpling, wonton, or potsticker wrappers",
+        "French toast, crepes, pancakes, variety mixes",
+        "Grain-based bars with or without filling/coating (e.g., breakfast bars, granola bars)",
+        "Pies, cobblers, fruit crisps, turnovers, other pastries",
+        "Pie crusts, pie shells, pastry sheets",
+        "Pizza crust",
+        "Taco shells (hard)",
+        "Waffles"
+      ],
+      "RACC-Value": [
+        110,
+        55,
+        50,
+        40,
+        125,
+        80,
+        55,
+        55,
+        30,
+        15,
+        30,
+        7,
+        20,
+        110,
+        40,
+        125,
+        55,
+        55,
+        30,
+        85
+      ]
+    },
+    {
+      "Category": "Beverages",
+      "sub-categories": [
+        "Carbonated and noncarbonated beverages, wine coolers, water",
+        "Coffee or tea (flavored and sweetened)",
+        "Juices, nectars, fruit drinks",
+        "Vegetable juice"
+      ],
+      "RACC-Value": [
+        360,
+        360,
+        240,
+        240
+      ]
+    },
+    {
+      "Category": "Cereals and Other Grain Products",
+      "sub-categories": [
+        "Breakfast cereals (hot cereal type), hominy grits",
+        "Breakfast cereals (ready-to-eat, weighing less than 20 g per cup)",
+        "Breakfast cereals (ready-to-eat, weighing 20 g or more but less than 43 g per cup)",
+        "Breakfast cereals (ready-to-eat, weighing 43 g or more per cup, biscuit types)",
+        "Bran or wheat germ",
+        "Flours or cornmeal",
+        "Grains (e.g., rice, barley, plain)",
+        "Pastas, plain",
+        "Pastas, dry, ready-to-eat (e.g., fried canned chow mein noodles)",
+        "Starches (e.g., cornstarch, potato starch, tapioca)",
+        "Stuffing"
+      ],
+      "RACC-Value": [
+        1,
+        15,
+        40,
+        60,
+        15,
+        30,
+        140,
+        140,
+        25,
+        10,
+        100
+      ]
+    },
+    {
+      "Category": "Dairy Products and Substitutes",
+      "sub-categories": [
+        "Cheese, cottage",
+        "Cheese used primarily as ingredients (e.g., dry cottage cheese, ricotta cheese)",
+        "Cheese, grated hard (e.g., Parmesan, Romano)",
+        "Cheese, all others (e.g., cream cheese, cheese spread)",
+        "Cream or cream substitutes (fluid)",
+        "Cream or cream substitutes (powder)",
+        "Cream, half & half",
+        "Eggnog",
+        "Milk (condensed, undiluted)",
+        "Milk (evaporated, undiluted)",
+        "Milk, milk-substitute beverages, milk-based drinks",
+        "Shakes or shake substitutes",
+        "Sour cream",
+        "Yogurt"
+      ],
+      "RACC-Value": [
+        110,
+        55,
+        5,
+        30,
+        15,
+        2,
+        30,
+        120,
+        30,
+        30,
+        240,
+        240,
+        30,
+        170
+      ]
+    },
+    {
+      "Category": "Desserts",
+      "sub-categories": [
+        "Ice cream, frozen yogurt, sherbet, frozen flavored/sweetened ice and pops",
+        "Sundaes",
+        "Custards, gelatin, pudding (prepared)",
+        "Custards, gelatin, pudding (dry mix)"
+      ],
+      "RACC-Value": [
+        188,
+        250,
+        130,
+        65
+      ]
+    },
+    {
+      "Category": "Fats and Oils",
+      "sub-categories": [
+        "Butter, margarine, shortening, lard, solid coconut oil, butter-flavored spread",
+        "Vegetable oil, including liquid coconut oil",
+        "Butter replacement, powder",
+        "Dressings for salad, dipping oil for bread",
+        "Mayonnaise, sandwich spread, mayonnaise-type dressing",
+        "Oil, spray type"
+      ],
+      "RACC-Value": [
+        10,
+        10,
+        2,
+        30,
+        15,
+        0.5
+      ]
+    },
+    {
+      "Category": "Vegetables",
+      "sub-categories": [
+        "Vegetables without sauce (e.g., lettuce, canned artichokes)",
+        "Vegetables with sauce",
+        "Vegetables primarily used for garnish or flavoring (e.g., parsley, garlic)",
+        "Chili pepper and green onion",
+        "Seaweed, dehydrated mushrooms",
+        "Sprouts",
+        "Vegetable juice and drinks",
+        "Olives",
+        "Pickled vegetables (e.g., kimchi, sauerkraut)",
+        "Relish",
+        "Vegetable pastes (e.g., tomato paste)",
+        "Vegetable sauces or purees (e.g., tomato sauce)"
+      ],
+      "RACC-Value": [
+        85,
+        110,
+        4,
+        30,
+        15,
+        65,
+        250,
+        15,
+        30,
+        15,
+        30,
+        60
+      ]
+    },
+    {
+      "Category": "Snacks",
+      "sub-categories": [
+        "Chips, pretzels, popcorn, includes coated versions, extruded snacks, grain and pulse-based snacks, pita chips and fruit-based snacks, such as fruit chips",
+        "Nuts or seeds, or a mixture of these, with or without chocolate, candies, dried fruit or other food added, for use as snacks",
+        "Roasted seaweed (nori), for use as snacks"
+      ],
+      "RACC-Value": [
+        50,
+        50,
+        5
+      ]
+    },
+    {
+      "Category": "Soups",
+      "sub-categories": [
+        "All varieties of soup, including bouillon, broth, and fondue broth"
+      ],
+      "RACC-Value": [
+        250
+      ]
+    },
+    {
+      "Category": "Sugars and Sweets",
+      "sub-categories": [
+        "Candies, confectionaries and chocolates, including a mixture of these with or without other food added, fudge, halva, chocolate bars and other chocolate products, such as yogurt and chocolate covered nuts and raisins, Halloween candy, box of assorted chocolates",
+        "After-dinner confections",
+        "Hard candies, powdered or liquid candies, except those listed as a separate item",
+        "Baking chocolate and candies, such as chocolate chips and caramel bits",
+        "Breath mints",
+        "Roll-type hard candies and mini size hard candies in dispenser packages",
+        "Confectioner's or icing sugar",
+        "Honey, molasses and bread spreads",
+        "Jams, jellies, marmalades, fruit butters and spreads",
+        "Fruit leather, bar or mini pieces, that may or may not contain vegetable ingredients",
+        "Marshmallows",
+        "Sugars, except those listed as a separate item",
+        "Sugar substitute, equivalent in sweetness to 4 g sugar",
+        "Syrups used as toppings, such as pancake syrups, maple syrup, fruit syrups and ice cream sundae syrups",
+        "Syrups used as ingredients, such as corn syrup, agave syrup and flavored syrups for milk"
+      ],
+      "RACC-Value": [
+        40,
+        10,
+        15,
+        15,
+        2,
+        5,
+        30,
+        20,
+        15,
+        20,
+        30,
+        4,
+        4,
+        60,
+        30
+      ]
+    },
+    {
+      "Category": "Combination Dishes",
+      "sub-categories": [
+        "Combination dishes, such as chicken and rice casserole, hash, macaroni and cheese with or without meat, spaghetti with sauce, lasagna, stir fry, meat or poultry casserole, baked beans, wieners and beans, meat chili, chili with beans, creamed chipped beef, beef or poultry ravioli with sauce, beef stroganoff, poultry à la king, Brunswick stew, goulash, stew, ragout, poutine, butter chicken with rice, shepherd's pie, stuffed cannelloni with sauce, stuffed poultry",
+        "Burritos, enchiladas, pizza, pizza rolls, sausage rolls, pastry rolls, cabbage rolls, quiche, sandwiches, crackers and meat or poultry lunch-type packages, gyros, burger on a bun, frank on a bun, calzones, tacos, pockets stuffed with meat, chicken cordon bleu, stuffed vegetables with meat or poultry, kabobs and souvlaki (meat and vegetables), empanadas, fajitas, sushi, perogies, souvlaki, pot pie, meat pie or tourtière, salad kit/bowl, consumed as a meal",
+        "Hors d'oeuvres, such as onion rings, dumplings, egg rolls, breaded zucchini sticks and other finger foods, such as mini quiches, cocktail sausage rolls and other stuffed puff pastries"
+      ],
+      "RACC-Value": [
+        300,
+        200,
+        85
+      ]
+    },
+    {
+      "Category": "Potatoes, Sweet Potatoes, and Yams",
+      "sub-categories": [
+        "French fries, including spirals, smiles, wedges, fried potatoes, grated potatoes, hash browns, potato skins, and pancakes, sweet potato fries",
+        "Potatoes, sweet potatoes, yams, mashed, candied, stuffed or with sauce",
+        "Potatoes, sweet potatoes, yams, cassava, plantains, plain, fresh, canned, or frozen"
+      ],
+      "RACC-Value": [
+        85,
+        140,
+        110
+      ]
+    },
+    {
+      "Category": "Miscellaneous",
+      "sub-categories": [
+        "Baking powder, baking soda, pectin, baker's yeast, vanilla extract and other flavoring preparations",
+        "Baking decorations, such as colored sugars or sprinkles for cookies",
+        "Bread crumbs and batter mixes",
+        "Cooking wine",
+        "Cocoa powder, carob powder, unsweetened",
+        "Non-alcoholic drink mixers, such as pina colada or daiquiri",
+        "Chewing gum",
+        "Salad and potato toppers, such as salad crunchies, salad crispins, bacon bits and their substitutes",
+        "Salt, salt substitutes and seasoned salts such as garlic salt and salt-based seasonings (which may contain herbs, spices, dehydrated vegetables, etc.), flavor enhancers, such as steak spice",
+        "Spices and herbs, without salt",
+        "Coconut milk",
+        "Dried coconut, flakes, shredded",
+        "Edible insects, powdered, whole, including snacks",
+        "Soy lecithin",
+        "Bee pollen",
+        "Agar agar powder"
+      ],
+      "RACC-Value": [
+        0.6,
+        4,
+        30,
+        30,
+        5,
+        250,
+        3,
+        7,
+        1,
+        0.5,
+        83,
+        15,
+        15,
+        3,
+        5,
+        0.05
+      ]
+    },
+    {
+      "foods": [
+        {
+          "Category": "Dessert Toppings and Fillings",
+          "sub-categories": [
+            "Cake frostings or icings",
+            "Other dessert toppings (e.g., fruits, syrups, spreads, marshmallow cream, nuts, dairy and non-dairy whipped toppings)",
+            "Pie fillings"
+          ],
+          "RACC-Value": [
+            30,
+            30,
+            85
+          ]
+        },
+        {
+          "Category": "Egg and Egg Substitutes",
+          "sub-categories": [
+            "Egg mixtures (e.g., egg foo young, scrambled eggs, omelets)",
+            "Eggs (all sizes)",
+            "Egg whites, sugared eggs, sugared egg yolks, and egg substitutes (fresh, frozen, dried)"
+          ],
+          "RACC-Value": [
+            110,
+            50,
+            50
+          ]
+        },
+        {
+          "Category": "Fish, Shellfish, Game Meats, and Meat or Poultry Substitutes",
+          "sub-categories": [
+            "Bacon substitutes, canned anchovies, anchovy pastes, caviar",
+            "Dried (e.g., jerky)",
+            "Entrees with sauce (e.g., fish with cream sauce, shrimp with lobster sauce)",
+            "Entrees without sauce (e.g., plain or fried fish and shellfish, fish and shellfish cake)",
+            "Fish, shellfish, or game meat (canned)",
+            "Substitute for luncheon meat, meat spreads, Canadian bacon, sausages, frankfurters, and seafood",
+            "Smoked or pickled fish, shellfish, or game meat; fish or shellfish spread"
+          ],
+          "RACC-Value": [
+            15,
+            30,
+            140,
+            85,
+            85,
+            55,
+            55
+          ]
+        },
+        {
+          "Category": "Fruits and Fruit Juice",
+          "sub-categories": [
+            "Candied or pickled",
+            "Dried",
+            "Fruits for garnish or flavor (e.g., maraschino cherries)",
+            "Fruit relishes (e.g., cranberry sauce, cranberry relish)",
+            "Fruits used primarily as ingredients (e.g., avocado, cranberries, lemon, lime)",
+            "Watermelon",
+            "All other fruits (fresh, canned, or frozen)",
+            "Juices, nectars, fruit drinks",
+            "Juices used as ingredients (e.g., lemon juice, lime juice)"
+          ],
+          "RACC-Value": [
+            30,
+            40,
+            4,
+            70,
+            50,
+            280,
+            140,
+            240,
+            5
+          ]
+        },
+        {
+          "Category": "Legumes",
+          "sub-categories": [
+            "Tofu, tempeh",
+            "Beans (plain or in sauce)"
+          ],
+          "RACC-Value": [
+            85,
+            130
+          ]
+        },
+        {
+          "Category": "Mixed Dishes",
+          "sub-categories": [
+            "Appetizers, hors d’oeuvres, mini mixed dishes (e.g., mini bagel pizzas, breaded mozzarella sticks, egg rolls)",
+            "Measurable with cup (e.g., casseroles, hash, macaroni and cheese, pot pies, spaghetti with sauce, stews)",
+            "Not measurable with cup (e.g., burritos, enchiladas, pizza, quiche, all types of sandwiches)"
+          ],
+          "RACC-Value": [
+            85,
+            1,
+            140
+          ]
+        },
+        {
+          "Category": "Nuts and Seeds",
+          "sub-categories": [
+            "Nuts, seeds, and mixtures (sliced, chopped, slivered, and whole)",
+            "Nut and seed butters, pastes, or creams",
+            "Coconut, nut, and seed flours"
+          ],
+          "RACC-Value": [
+            30,
+            30,
+            15
+          ]
+        },
+        {
+          "Category": "Salads",
+          "sub-categories": [
+            "Gelatin salad",
+            "Pasta or potato salad",
+            "All other salads (e.g., egg, fish, shellfish, bean, fruit, or vegetable salads)"
+          ],
+          "RACC-Value": [
+            120,
+            140,
+            100
+          ]
+        },
+        {
+          "Category": "Sauces, Dips, Gravies, and Condiments",
+          "sub-categories": [
+            "Barbecue sauce, hollandaise sauce, tartar sauce, tomato chili sauce, all dips",
+            "Major main entree sauces (e.g., spaghetti sauce)",
+            "Minor main entree sauces (e.g., pizza sauce, pesto sauce), other sauces used as toppings (e.g., gravy, cheese sauce), cocktail sauce",
+            "Major condiments (e.g., catsup, steak sauce, soy sauce, vinegar)"
+          ],
+          "RACC-Value": [
+            30,
+            125,
+            60,
+            15
+          ]
+        }
+      ]
     }
   ]
 }
